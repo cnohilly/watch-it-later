@@ -12,6 +12,10 @@ body {
     transition: color .2s ease-in-out;
 }
 
+.navbar-dropdown a {
+    font-size: 16px;
+}
+
 main {
     flex: 1;
     padding: 8rem 0;
@@ -27,13 +31,24 @@ main {
 }
 
 @media screen and (max-width: 1023px) {
+    .navbar-item .buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navbar-item .buttons .button {
+        display: flex;
+        width: 100%;
+        margin-right: 0!important;
+    }
+
     #login-form, #signup-form {
-        max-width: 75%!important;
+        max-width: 55%!important;
     }
 }
 
 @media screen and (max-width: 769px) {
     #login-form, #signup-form {
-        max-width: none!important;
+        max-width: 80%!important;
     }
 }

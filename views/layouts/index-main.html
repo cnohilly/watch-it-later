@@ -19,6 +19,7 @@
                 <h1 class="navbar-item has-text-weight-bold is-size-4" id="nav-logo">
                     Watch It Later
                 </h1>
+                <!-- Need to include JS to add 'is-active' class to "".navbar-menu" and ".navbar-burger" on button click -->
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
@@ -58,12 +59,21 @@
                     <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-pop-mov" href="/watchlist">
                         Watchlist
                     </a>
-                    <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-watchlist" href="/login">
-                        Login
-                    </a>
-                    <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-watchlist" href="/signup">
-                        Sign Up
-                    </a>
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <!-- If Logged In -->
+                            <button class="button is-danger has-text-weight-semibold" id="nav-logout">
+                                Logout
+                            </button>
+                            <!-- Else -->
+                            <a class="button is-primary has-text-weight-semibold" id="nav-signup" href="/signup">
+                                Sign up
+                            </a>
+                            <a class="button is-info has-text-weight-semibold" id="nav-login" href="/login">
+                                Login
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -71,8 +81,10 @@
     
     <main class="is-flex is-flex-direction-column">
 
+        <!-- {{{ body }}} -->
+
         <!-- login form -->
-        <form id="login-form" class="box container is-fluid py-3">
+        <form id="login-form" class="box container is-fluid py-3 is-hidden">
             <h2 class="has-text-centered has-text-weight-bold is-size-4 my-4">
                 Login
             </h2>
@@ -94,6 +106,33 @@
             <div class="mt-5">
                 Don't have an account?
                 <a href="/signup" id="signup-link">Sign Up here</a>
+            </div>
+        </form>
+
+        <!-- signup form -->
+        <form id="signup-form" class="box container is-fluid py-3">
+            <h2 class="has-text-centered has-text-weight-bold is-size-4 my-4">
+                Sign Up
+            </h2>
+            <div class="field">
+                <label for="username-signup" class="label">Username</label>
+                <div class="control">
+                    <input id="username-signup" type="text" class="input is-rounded"/>
+                </div>
+            </div>
+            <div class="field">
+                <label for="password-signup" class="label">Password</label>
+                <div class="control">
+                    <input id="password-signup" type="password" class="input is-rounded"/>
+                </div>
+                <p class="help">Password must be at least 4 characters</p>
+            </div>
+            <button type="submit" class="mt-5 button is-info is-rounded is-fullwidth">
+                Sign Up
+            </button>
+            <div class="mt-5">
+                Already have an account?
+                <a href="/login" id="login-link">Login here</a>
             </div>
         </form>
         

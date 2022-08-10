@@ -44,15 +44,25 @@ User.init(
         }
     },
     {
-       // pass in our imported sequelize connection (the direct connection to our database)
+     hooks: {
+            //set up beforeCreate lifecycle "hook" functionality
+            async beforeCreate(newUserData) {
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                return newUserData;
+            },
+            //set up beforeUpdate lifeCycle "hook" functionality
+            async beforeUpdate(updatedUserData) {
+                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+                return updatedUserData;
+            }
+        }
+    },
+    {
+       
       sequelize,
-      // don't automatically create createdAt/updatedAt timestamp fields
       timestamps: false,
-      // don't pluralize name of database table
       freezeTableName: true,
-      // use underscores instead of camel-casing (i.e. `comment_text` and not `commentText`)
       underscored: true,
-      // make it so our model name stays lowercase in the database
       modelName: 'user' 
     }
 );

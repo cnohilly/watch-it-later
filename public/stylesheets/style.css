@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.navbar-menu .navbar-item:hover {
+    color: gray!important;
+    transition: color .2s ease-in-out;
+}
+
+main {
+    flex: 1;
+    padding: 8rem 0;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+}
+
+#login-form, #signup-form {
+    max-width: 30%!important;
+}
+
+@media screen and (max-width: 1023px) {
+    #login-form, #signup-form {
+        max-width: 75%!important;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    #login-form, #signup-form {
+        max-width: none!important;
+    }
+}

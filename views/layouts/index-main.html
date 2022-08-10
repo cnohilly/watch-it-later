@@ -1,0 +1,85 @@
+<!-- HTML for main.handlebars.js -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"> 
+    <link rel="stylesheet" href="../../public/stylesheets/style.css">
+    <title>Watch It Later</title>
+</head>
+<body class="is-flex is-flex-direction-column">
+    <header>
+        <nav class="navbar is-fixed-top is-black" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand px-3">
+                <h1 class="navbar-item has-text-weight-bold is-size-4" id="nav-logo">
+                    Watch It Later
+                </h1>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link has-text-weight-semibold">
+                            Popular
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-pop-mov" href="#popular-movies">
+                                Popular Movies
+                            </a>
+                            <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-pop-tv" href="#popular-tv">
+                                Popular TV Shows
+                            </a>
+                        </div>
+                    </div>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link has-text-weight-semibold">
+                            Top Rated
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-watchlist" href="#top-movies">
+                                Top Rated Movies
+                            </a>
+                            <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-watchlist" href="#top-tv">
+                                Top Rated TV Shows
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-end">
+                    <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-pop-mov" href="/watchlist">
+                        Watchlist
+                    </a>
+                    <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-watchlist" href="/login">
+                        Login
+                    </a>
+                    <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-watchlist" href="/signup">
+                        Sign Up
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="is-flex is-flex-direction-column">
+
+        
+        
+    </main>
+
+    <footer class="footer">
+        <div class="has-text-centered has-text-weight-semibold">
+            <p>Made by Kyle Tang, Stephon Treadwell, Chris Nohilly, Braulio Loaiza, and Ian Zyvith</p>
+            <p class="pt-3">&copy; 2022 Watch It Later, Inc.</p>
+        </div>
+    </footer>
+</body>
+</html>

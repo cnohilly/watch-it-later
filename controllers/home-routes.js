@@ -1,5 +1,3 @@
-const { response } = require('express');
-
 const router = require('express').Router();
 
 router.get('/', (req,res) => {
@@ -9,10 +7,10 @@ router.get('/', (req,res) => {
 });
 
 router.get('/:type/:id', async (req,res) => {
-    var apiUrl = 'https://api.themoviedb.org/3/' + req.params.type + '/' + req.params.id + '?api_key=' + tmdbkey + '&language=en-US'
+    var apiUrl = 'https://api.themoviedb.org/3/' + req.params.type + '/' + req.params.id + '?api_key=' + process.env.TMDB_KEY + '&language=en-US'
     const movieData = await fetch(apiUrl);
-    if (response.ok) {
-        movieData = await response.json();
+    if (movieData.ok) {
+        movieData = await movieData.json();
         console.log(movieData);
         res.render('content-page');
     }

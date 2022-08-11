@@ -9,68 +9,107 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../../public/stylesheets/style.css">
     <title>Watch It Later</title>
 </head>
-<body class="is-flex is-flex-direction-column">
+<body class="is-flex is-flex-direction-column has-background-dark">
     <header>
+        <!-- navigation -->
         <nav class="navbar is-fixed-top is-black" role="navigation" aria-label="main navigation">
             <div class="navbar-brand px-3">
                 <h1 class="navbar-item has-text-weight-bold is-size-4" id="nav-logo">
                     Watch It Later
                 </h1>
-                <!-- Need to include JS to add 'is-active' class to "".navbar-menu" and ".navbar-burger" on button click -->
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <button id="searchIcon" class="navbar-item is-medium p-0">
+                    <span class="icon has-text-info is-medium">
+                        <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                    </span>
+                </button>
+                <a role="button" class="navbar-burger m-0" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-            <div id="navbarBasicExample" class="navbar-menu">
+
+            <!-- search field -->
+            <div class="navbar-item navbar-search field has-addons mb-0 search-hide">
+                <div class="control">
+                    <span id="menu-search-filter" class="select is-rounded">
+                        <select>
+                            <option>Movies</option>
+                            <option>TV Shows</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="control is-expanded">
+                    <input class="input" type="text" placeholder="Search for a Movie or TV show">
+                </div>
+                <div class="control">
+                    <button class="button is-info is-rounded" type="submit" id="search" >
+                        <span class="icon">
+                            <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- navbar menu -->
+            <div class="navbar-menu">
                 <div class="navbar-start">
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link has-text-weight-semibold">
+                        <a class="navbar-link">
                             Popular
                         </a>
                         <div class="navbar-dropdown">
-                            <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-pop-mov" href="#popular-movies">
-                                Popular Movies
+                            <a class="navbar-item has-text-centered" id="nav-pop-mov" href="#popular-movies">
+                                Movies
                             </a>
-                            <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-pop-tv" href="#popular-tv">
-                                Popular TV Shows
+                            <a class="navbar-item has-text-centered" id="nav-pop-tv" href="#popular-tv">
+                                TV Shows
                             </a>
                         </div>
                     </div>
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link has-text-weight-semibold">
+                        <a class="navbar-link">
                             Top Rated
                         </a>
                         <div class="navbar-dropdown">
-                            <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-watchlist" href="#top-movies">
-                                Top Rated Movies
+                            <a class="navbar-item has-text-centered" id="nav-watchlist" href="#top-movies">
+                                Movies
                             </a>
-                            <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-watchlist" href="#top-tv">
-                                Top Rated TV Shows
+                            <a class="navbar-item has-text-centered" id="nav-watchlist" href="#top-tv">
+                                TV Shows
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="navbar-end">
-                    <a class="navbar-item has-text-centered has-text-weight-semibold" id="nav-pop-mov" href="/watchlist">
+                    <a class="navbar-item has-text-centered" id="nav-pop-mov" href="/watchlist">
                         Watchlist
                     </a>
                     <div class="navbar-item">
                         <div class="buttons">
-                            <!-- If Logged In -->
-                            <button class="button is-danger has-text-weight-semibold" id="nav-logout">
-                                Logout
-                            </button>
-                            <!-- Else -->
-                            <a class="button is-primary has-text-weight-semibold" id="nav-signup" href="/signup">
-                                Sign up
+                            <!-- {{#if loggedIn}} -->
+                            <!-- <button class="button is-danger is-outlined" id="nav-logout">
+                                <span class="icon is-small">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                </span>
+                                <span>Logout</span>
+                            </button> -->
+                            <!-- {{else}} -->
+                            <a class="button is-info is-outlined" id="nav-login" href="/login">
+                                <span class="icon is-small">
+                                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                                </span>
+                                <span>Login</span>
                             </a>
-                            <a class="button is-info has-text-weight-semibold" id="nav-login" href="/login">
-                                Login
+                            <a class="button is-primary is-outlined" id="nav-signup" href="/signup">
+                                <span class="icon is-small">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </span>
+                                <span>Sign up</span>
                             </a>
                         </div>
                     </div>
@@ -79,12 +118,26 @@
         </nav>
     </header>
     
+    <!-- main -->
     <main class="is-flex is-flex-direction-column">
 
         <!-- {{{ body }}} -->
 
+        <!--Hero Section-->
+        <!-- <section class="hero is-medium">
+            <div class="hero-body">
+                <h2 class="title has-text-light is-size-1">
+                    Welcome!
+                </h2>
+                <p class="subtitle has-text-light is-size-3">
+                    Tons of Movies and TV shows to build your watchlist! Enjoy!
+                </p>
+            </div>
+        </section> -->
+        <!--End of Hero Section-->
+
         <!-- login form -->
-        <form id="login-form" class="box container is-fluid py-3 is-hidden">
+        <form id="login-form" class="box container is-fluid">
             <h2 class="has-text-centered has-text-weight-bold is-size-4 my-4">
                 Login
             </h2>
@@ -103,14 +156,14 @@
             <button type="submit" class="mt-5 button is-info is-rounded is-fullwidth">
                 Login
             </button>
-            <div class="mt-5">
+            <div class="mt-5 mb-4 has-text-centered">
                 Don't have an account?
-                <a href="/signup" id="signup-link">Sign Up here</a>
+                <a href="/signup" id="signup-link">Sign Up</a>
             </div>
         </form>
 
         <!-- signup form -->
-        <form id="signup-form" class="box container is-fluid py-3">
+        <form id="signup-form" class="box container is-fluid is-hidden">
             <h2 class="has-text-centered has-text-weight-bold is-size-4 my-4">
                 Sign Up
             </h2>
@@ -121,28 +174,47 @@
                 </div>
             </div>
             <div class="field">
+                <label for="email-signup" class="label">Email</label>
+                <div class="control">
+                    <input id="email-signup" type="text" class="input is-rounded"/>
+                </div>
+            </div>
+            <div class="field">
                 <label for="password-signup" class="label">Password</label>
                 <div class="control">
                     <input id="password-signup" type="password" class="input is-rounded"/>
                 </div>
-                <p class="help">Password must be at least 4 characters</p>
+                <div class="icon-text mt-3  ">
+                    <span class="icon has-text-info">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    <span>Password must be at least 4 characters</span>
+                </div>
             </div>
             <button type="submit" class="mt-5 button is-info is-rounded is-fullwidth">
                 Sign Up
             </button>
-            <div class="mt-5">
+            <div class="mt-5 mb-4 has-text-centered">
                 Already have an account?
-                <a href="/login" id="login-link">Login here</a>
+                <a href="/login" id="login-link">Login</a>
             </div>
         </form>
         
     </main>
 
+    <!-- footer -->
     <footer class="footer">
         <div class="has-text-centered has-text-weight-semibold">
             <p>Made by Kyle Tang, Stephon Treadwell, Chris Nohilly, Braulio Loaiza, and Ian Zyvith</p>
             <p class="pt-3">&copy; 2022 Watch It Later, Inc.</p>
         </div>
     </footer>
+
+    <!-- script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../public/javascript/menu.js"></script>
+    <!-- {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}} -->
 </body>
 </html>

@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { response } = require('express');
 const e = require('express');
-const fetch = require('node-fetch');
 const axios = require('axios').default;
 const getContentData = require('../utils/tmdb-api');
 const createContentObj = require('../utils/helpers');

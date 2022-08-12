@@ -1,9 +1,5 @@
 const router = require('express').Router();
-<<<<<<< HEAD
-const { User, Comment, Vote } = require('../../models');
-=======
-const { User, Comment, Vote } = require('../../models');
->>>>>>> feature/endpoints
+const { User, Post, Comment, Vote } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
@@ -15,11 +11,7 @@ router.get('/', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-<<<<<<< HEAD
 });
-=======
-});
-
 
 router.post('/login', (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}

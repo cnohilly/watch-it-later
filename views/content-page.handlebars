@@ -1,3 +1,56 @@
-<p>
-    {{content.original_title}}
-</p>
+<section>
+    <div>{{content.id}}</div>
+    <div>{{content.type}}</div>
+    <div>{{content.title}}</div>
+    <div>{{content.release}}</div>
+    <div>{{content.popularity}}</div>
+    <div>{{content.overview}}</div>
+    <div>{{content.genres}}</div>
+    <img src="{{content.poster}}">
+    <img src="{{content.backdrop}}" alt="">
+</section>
+{{!--
+<div id="movie-modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card" data-content-id="" data-content-type="">
+        <header class="modal-card-head is-flex is-flex-direction-column is-flex-wrap-wrap has-background-info-dark">
+            <!-- Modal title -->
+            <h2 class="modal-card-title has-text-weight-bold has-text-white is-size-3"></h2>
+        </header>
+        <section class="modal-card-body has-background-dark has-text-white">
+            <div class="is-flex is-flex-direction-row">
+                <!-- Modal image -->
+                <img id="modal-poster-img" class="m-2" src="" alt="">
+                <ul class="m-2 is-flex is-flex-wrap-wrap is-flex-direction-column">
+                    <!-- Modal content -->
+                    <li id="modal-release">
+                        <h3>Release:</h3>
+                        <p></p>
+                    </li>
+                    <li id="modal-type">
+                        <h3>Type:</h3>
+                        <p></p>
+                    </li>
+                    <li id="modal-genre">
+                        <h3>Genre:</h3>
+                        <p></p>
+                    </li>
+                    <li id="modal-popularity">
+                        <h3>Popularity:</h3>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            <!-- Modal description -->
+            <div id="modal-movie-description" class="m-2">
+                <h3>Description:</h3>
+                <p>
+                </p>
+            </div>
+        </section>
+        <footer class="modal-card-foot is-flex is-flex is-justify-content-space-between has-background-info-dark">
+            <button id="modal-watchlist-btn" class="button is-success">Add to Watchlist</button>
+            <button id="modal-cancel-btn" class="button is-danger">Cancel</button>
+        </footer>
+    </div>
+</div> --}}

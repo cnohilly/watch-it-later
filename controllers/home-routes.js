@@ -4,6 +4,7 @@ const e = require('express');
 const fetch = require('node-fetch');
 const axios = require('axios').default;
 const getContentData = require('../utils/tmdb-api');
+const createContentObj = require('../utils/helpers');
 
 router.get('/', (req, res) => {
     res.render('homepage', {
@@ -13,15 +14,15 @@ router.get('/', (req, res) => {
 
 router.get('/:type/:id', async (req, res) => {
     try {
-        const movieData = await getContentData(req.params.type, req.params.id);
+        let movieData = await getContentData(req.params.type, req.params.id);
+        movieData = createContentObj(movieData.data, req.params.type);
         console.log(movieData);
         res.render('content-page', {
-            content: movieData.data
+            content: movieData
         });
     } catch (err) {
         console.log(err);
-        console.log(err.response.status);
-        res.status(err.response.status || 500).json(err.response.data);
+        res.status(500).json(err);
     }
     // fetch('https://api.github.com/users/github')
     //     .then(res => res.json())

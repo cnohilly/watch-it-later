@@ -4,6 +4,7 @@ const e = require('express');
 const axios = require('axios').default;
 const getContentData = require('../utils/tmdb-api');
 const createContentObj = require('../utils/helpers');
+const { User, Comment, Vote } = require('../models');
 
 router.get('/', (req, res) => {
     res.render('homepage', {

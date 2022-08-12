@@ -47,7 +47,6 @@ main {
     justify-content: space-evenly;
     margin-top: 4rem;
     max-width: 400px !important;
-    height: auto;
 }
 
 #login-form {
@@ -55,7 +54,7 @@ main {
 }
 
 #signup-form {
-    max-height: 500px;
+    max-height: 550px;
 }
 
 #signup-form .icon-text span {

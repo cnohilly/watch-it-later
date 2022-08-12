@@ -29,6 +29,22 @@ router.get('/:type/:id', async (req, res) => {
     //     .then(json => console.log(json));
 });
 
+router.get('/watchlist', async (req, res) => {
+    if (!req.session.loggedIn) {
+        res.redirect('/login');
+    }
+    try {
+        const dbUserData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] }
+        });
+        console.log(dbUserData);
+        res.render('homepage');
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+})
+
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');

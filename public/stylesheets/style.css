@@ -1,0 +1,109 @@
+:root {
+    --primary-color: #0A7AEA;
+    --secondary-color: #66B9D0;
+    --tertiary-color: #68626F;
+    --shade-color: #221D28;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* main.handlebars START */
+body {
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+    background: url(../images/blue-bg.jpg) no-repeat fixed center;
+    background-size: cover;
+}
+
+.navbar-dropdown a {
+    font-size: 16px;
+}
+
+.navbar-search {
+    flex-grow: 1;
+}
+
+#searchIcon {
+    background: 0 0;
+    border: none;
+    font-size: 1em;
+    justify-content: center;
+    cursor: pointer;
+    width: 3.25rem;
+    margin-left: auto;
+    display: none;
+}
+
+main {
+    flex: 1;
+    padding: 56px 0;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+}
+/* main.handlebars END */
+
+/* login and signup forms START */
+#login-form, #signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: 4rem;
+    max-width: 400px !important;
+}
+
+#login-form {
+    max-height: 450px;
+}
+
+#signup-form {
+    max-height: 550px;
+}
+
+#signup-form .icon-text span {
+    font-size: 14px;
+}
+/* login and signup forms END */
+
+.hero-body h2, .hero-body p {
+    text-shadow: 3px 1px 7px black;
+}
+
+/* media queries */
+@media screen and (max-width: 1200px) {
+    #searchIcon {
+        display: flex;
+    }
+
+    .search-hide {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .navbar-item .buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navbar-item .buttons .button {
+        display: flex;
+        width: 100%;
+        margin-right: 0 !important;
+    }
+
+    #login-form, #signup-form {
+        max-width: 55% !important;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    #login-form, #signup-form {
+        max-width: 80% !important;
+        padding: 1.25rem;
+    }
+}

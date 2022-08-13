@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Watch It Later</title>
 </head>
@@ -93,14 +94,14 @@
                     </a>
                     <div class="navbar-item">
                         <div class="buttons">
-                            <!-- {{#if loggedIn}} -->
-                            <!-- <button class="button is-danger is-outlined" id="nav-logout">
+                            {{#if loggedIn}}
+                            <button class="button is-danger is-outlined" id="nav-logout">
                                 <span class="icon is-small">
                                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                 </span>
                                 <span>Logout</span>
-                            </button> -->
-                            <!-- {{else}} -->
+                            </button>
+                            {{else}}
                             <a class="button is-info is-outlined" id="nav-login" href="/login">
                                 <span class="icon is-small">
                                     <i class="fa-solid fa-arrow-right-to-bracket"></i>
@@ -113,7 +114,7 @@
                                 </span>
                                 <span>Sign up</span>
                             </a>
-                            <!-- {{/if}} -->
+                            {{/if}}
                         </div>
                     </div>
                 </div>
@@ -139,8 +140,8 @@
     <!-- script -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/javascript/menu.js"></script>
-    <!-- {{#if loggedIn}}
+    {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
-    {{/if}} -->
+    {{/if}}
 </body>
 </html>

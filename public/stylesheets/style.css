@@ -1,3 +1,10 @@
+:root {
+    --primary-color: #0A7AEA;
+    --secondary-color: #66B9D0;
+    --tertiary-color: #68626F;
+    --shade-color: #221D28;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -31,7 +38,7 @@ body {
 
 main {
     flex: 1;
-    padding: 4rem 0;
+    padding: 56px 0;
 }
 
 .footer {

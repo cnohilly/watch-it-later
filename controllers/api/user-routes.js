@@ -4,7 +4,13 @@ const { User, Comment, Vote } = require('../../models');
 // get all users
 router.get('/', (req, res) => {
   User.findAll({
-    attributes: { exclude: ['password'] }
+    attributes: { exclude: ['password'] },
+    include:[
+      {
+        model:Comment,
+        attributes:['comment_text','movie_id']
+      }
+    ]
   })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {

@@ -1,7 +1,7 @@
 {
   "name": "watch-it-later",
   "version": "1.0.0",
-  "description": "",
+  "description": "[![License](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/licenses/MIT)",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

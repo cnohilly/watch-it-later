@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Comment, Vote } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // The `/api/vote` endpoint
 
@@ -21,7 +22,7 @@ router.get('/', (req, res) => {
 });
 
 // post a new vote
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
   Vote.create({
     id: req.body.id,
     user_id: req.body.user_id,

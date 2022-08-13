@@ -11,6 +11,21 @@ router.get("/", (req, res) => {
     });
 });
 
+
+// get comments by id
+router.get("/:id", (req, res) => {
+  Comment.findOne({
+    where:{
+      id: req.body.id
+    }
+  })
+    .then((dbUserData) => res.json(dbUserData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 //create comment
 
 router.post("/", (req, res) => {

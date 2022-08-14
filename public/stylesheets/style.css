@@ -306,4 +306,28 @@ main {
     #comment-section {
         padding: 0 1rem 2rem 1rem;
     }
+
+    .list-container {
+        grid-template-columns: repeat(auto-fill, 28vw);
+    }
+
+    .card img {
+        height: 42vw;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .list-container {
+        grid-template-columns: repeat(auto-fill, 43vw);
+        padding: 0;
+        background-color: rgb(23, 25, 42, 0%);
+    }
+
+    .card img {
+        height: 65vw;
+    }
+
+    .card-content {  
+        padding: 0 0.4rem 0.4rem 0.4rem;
+    }
 }

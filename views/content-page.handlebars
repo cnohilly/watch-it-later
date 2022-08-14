@@ -63,7 +63,8 @@
 
 {{!-- content-info section --}}
 <section id="content" class="content-section custom-bg-color is-flex is-flex-wrap-wrap">
-    <div>
+    {{!-- container for content.poster and buttons --}}
+    <div id="poster-container">
         <img class="poster" src="{{content.poster}}">
         <div class="content-buttons field is-grouped is-grouped-centered pt-2">
             <p class="control is-expanded">
@@ -77,6 +78,34 @@
                         <i class="fa-solid fa-heart"></i>
                     </span>
                 </button>
+            </p>
+        </div>
+    </div>
+    {{!-- container for content info --}}
+    <div id="content-info" class="content is-flex is-flex-direction-column is-flex-wrap-wrap has-text-grey-lighter">
+        <h2 id="content-title" class="title is-size-4-touch is-size-2 has-text-white mb-0 py-4">
+            {{content.title}}
+        </h2>
+        <p class="has-text-weight-semibold">
+            Type: 
+            <span class="is-uppercase has-text-weight-normal">{{content.type}}</span>
+        </p>
+        <p class="has-text-weight-semibold">
+            Release: 
+            <span class="has-text-weight-normal">{{content.release}}</span>
+        </p>
+        <p class="has-text-weight-semibold">
+            Genre: 
+            <span class="has-text-weight-normal">{{content.genres}}</span>
+        </p>
+        <p class="has-text-weight-semibold">
+            Popularity: 
+            <span class="has-text-weight-normal">{{content.popularity}}</span>
+        </p>
+        <div>
+            <span class="has-text-weight-semibold">Overview:</span>
+            <p>
+                {{content.overview}}
             </p>
         </div>
     </div>

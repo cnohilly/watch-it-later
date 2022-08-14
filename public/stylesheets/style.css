@@ -108,6 +108,13 @@ main {
     height: auto;
     object-fit: cover;
 }
+
+#content-info {
+    line-height: 2em;
+    flex: 1;
+    margin: 0 3rem;
+    transition: all ease-in-out 0.3s;
+}
 /* content-page END*/
 
 /* MEDIA QUERIES */
@@ -186,5 +193,17 @@ main {
 
     .field.is-grouped>.control:not(:last-child) {
         margin-right: 1rem;
+    }
+
+    #content-info {
+        margin: 1rem;
+    }
+
+    .content p:not(:last-child) {
+        margin-bottom: 0.5em;
+    }
+
+    .content h2 {
+        font-size: 1.5em;
     }
 }

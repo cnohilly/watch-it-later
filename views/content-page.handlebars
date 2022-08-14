@@ -117,7 +117,7 @@
         comments.length comments
         {{!-- {{comments.length}} {{format_plural "comment" comments.length}} --}}
     </div>
-    <!-- comment form -->
+    {{!-- comment form --}}
     <article id="comment-form" class="media">
         <figure class="media-left">
             <p class="image is-48x48">
@@ -138,14 +138,16 @@
         </div>
     </article>
 
-    <div id="comment-list" class="is-flex is-flex-direction-column">
-        {{!-- harded coded comment container for easier formatting and styling--}}
+    {{!-- {{> comments post.comments}} --}}
 
-        {{!-- {{> comments post.comments}} --}}
+    {{!-- hard-coded comment container for easier formatting and styling--}}
+    {{!-- remove once comment route is tested and completed --}}
+    <div id="comment-list" class="is-flex is-flex-direction-column">
         {{#each this}}
         <article class="media">
             <figure class="media-left">
                 <p class="image is-48x48">
+                    {{!-- container for user profile image --}}
                     <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
                 </p>
             </figure>

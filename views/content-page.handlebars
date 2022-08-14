@@ -1,4 +1,4 @@
-<section>
+{{!-- <section>
     <div>{{content.id}}</div>
     <div>{{content.type}}</div>
     <div>{{content.title}}</div>
@@ -8,7 +8,7 @@
     <div>{{content.genres}}</div>
     <img src="{{content.poster}}">
     <img src="{{content.backdrop}}" alt="">
-</section>
+</section> --}}
 {{!--
 <div id="movie-modal" class="modal">
     <div class="modal-background"></div>
@@ -54,3 +54,8 @@
         </footer>
     </div>
 </div> --}}
+
+<section class="hero is-medium content-hero" style="background: url('{{content.backdrop}}');">
+    <div class="overlay is-overlay"></div>
+    <div class="hero-body"></div>
+</section>

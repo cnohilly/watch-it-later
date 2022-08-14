@@ -38,7 +38,7 @@ body {
 
 main {
     flex: 1;
-    padding: 56px 0;
+    padding-top: 56px;
 }
 
 .footer {
@@ -53,6 +53,7 @@ main {
     flex-direction: column;
     justify-content: space-evenly;
     margin-top: 4rem;
+    margin-bottom: 2rem;
     max-width: 400px !important;
 }
 
@@ -69,11 +70,28 @@ main {
 }
 /* login and signup forms END */
 
-.hero-body h2, .hero-body p {
+/* content-page START*/
+.hero-body h2, .hero-body p, .content-section {
     text-shadow: 3px 1px 7px black;
 }
 
-/* media queries */
+.custom-bg-color {
+    background-color: var(--shade-color);
+}
+
+.content-hero {
+    background-position: 50% 20% !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    position: relative;
+}
+
+.overlay {
+    background-image: linear-gradient(to bottom, rgb(34, 29, 40, 50%), var(--shade-color ));
+}
+/* content-page END*/
+
+/* MEDIA QUERIES */
 @media screen and (max-width: 1200px) {
     #searchIcon {
         display: flex;
@@ -85,6 +103,10 @@ main {
 }
 
 @media screen and (max-width: 1023px) {
+    main {
+        padding-top: 52px;
+    }
+
     .navbar-item .buttons {
         display: flex;
         flex-direction: column;
@@ -105,5 +127,9 @@ main {
     #login-form, #signup-form {
         max-width: 80% !important;
         padding: 1.25rem;
+    }
+
+    .hero.is-medium .hero-body {
+        padding: 9rem 4.5rem;
     }
 }

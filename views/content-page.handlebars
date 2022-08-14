@@ -55,7 +55,29 @@
     </div>
 </div> --}}
 
+{{!-- Hero banner for content.backdrop --}}
 <section class="hero is-medium content-hero" style="background: url('{{content.backdrop}}');">
     <div class="overlay is-overlay"></div>
     <div class="hero-body"></div>
+</section>
+
+{{!-- content-info section --}}
+<section id="content" class="content-section custom-bg-color is-flex is-flex-wrap-wrap">
+    <div>
+        <img class="poster" src="{{content.poster}}">
+        <div class="content-buttons field is-grouped is-grouped-centered pt-2">
+            <p class="control is-expanded">
+                <button class="add-btn button is-success is-fullwidth">
+                    Add to watchlist
+                </button>
+            </p>
+            <p class="control">
+                <button class="button is-link">
+                    <span class="icon is-small">
+                        <i class="fa-solid fa-heart"></i>
+                    </span>
+                </button>
+            </p>
+        </div>
+    </div>
 </section>

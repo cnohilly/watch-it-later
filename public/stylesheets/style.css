@@ -89,6 +89,25 @@ main {
 .overlay {
     background-image: linear-gradient(to bottom, rgb(34, 29, 40, 50%), var(--shade-color ));
 }
+
+.content-section {
+    z-index: 2;
+    padding: 0 10rem;
+}
+
+.poster {
+    width: 300px;
+    height: 450px;
+    box-shadow: 0px 0px 2.5rem rgb(0, 0, 0);
+    border-radius: 10px;
+    transition: all ease-in-out 0.3s;
+}
+
+.img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
 /* content-page END*/
 
 /* MEDIA QUERIES */
@@ -121,6 +140,15 @@ main {
     #login-form, #signup-form {
         max-width: 55% !important;
     }
+
+    .content-section {
+        padding: 1rem 5rem 0 5rem;
+    }
+
+    .poster {
+        width: 250px;
+        height: 375px;
+    }
 }
 
 @media screen and (max-width: 769px) {
@@ -131,5 +159,32 @@ main {
 
     .hero.is-medium .hero-body {
         padding: 9rem 4.5rem;
+    }
+
+    .content-section {
+        padding: 0rem;
+        flex-direction: column;
+    }
+
+    .poster {
+        display: flex;
+        margin: -16rem auto 0 auto;
+    }
+
+    .content-buttons {
+        margin: 1rem auto 0 auto;
+    }
+
+    .add-btn {
+        padding-left: 2.5em;
+        padding-right: 2.5em;
+    }
+
+    .content-buttons .control.is-expanded {
+        flex-grow: 0 !important;
+    }
+
+    .field.is-grouped>.control:not(:last-child) {
+        margin-right: 1rem;
     }
 }

@@ -2,7 +2,7 @@
     --primary-color: #0A7AEA;
     --secondary-color: #66B9D0;
     --tertiary-color: #68626F;
-    --shade-color: #221D28;
+    --shade-color: #17192A;
 }
 
 * {
@@ -22,7 +22,7 @@ body {
 }
 
 .navbar-search {
-    flex-grow: 1;
+    flex-grow: 2;
 }
 
 #searchIcon {
@@ -84,10 +84,11 @@ main {
     background-repeat: no-repeat !important;
     background-size: cover !important;
     position: relative;
+    background-color: var(--shade-color) !important;
 }
 
 .overlay {
-    background-image: linear-gradient(to bottom, rgb(34, 29, 40, 50%), var(--shade-color ));
+    background-image: linear-gradient(to bottom, rgb(34, 29, 40, 70%), var(--shade-color ));
 }
 
 .content-section {
@@ -116,15 +117,29 @@ main {
     transition: all ease-in-out 0.3s;
 }
 
+#poster-container, #content-info {
+    margin-top: -30rem;
+}
+
 #comment-section {
-    padding: 2rem 10rem;
+    padding: 2rem 10rem 5rem 10rem;
     transition: all ease-in-out 0.3s;
+}
+
+.comment-number {
+    border-bottom: 1px solid rgba(219,219,219,.5);
+    padding-bottom: 1rem;
 }
 
 .media {
     border-top: 1px solid rgba(219,219,219,.5);
     margin-top: 1rem;
     padding-top: 1rem;
+}
+
+#comment-form {
+    border: none;
+    margin-top: 0rem;
 }
 /* content-page END*/
 
@@ -163,6 +178,10 @@ main {
         padding: 1rem 5rem 0 5rem;
     }
 
+    #comment-section {
+        padding: 1rem 5rem 2rem 5rem;
+    }
+
     .poster {
         width: 250px;
         height: 375px;
@@ -175,8 +194,8 @@ main {
         padding: 1.25rem;
     }
 
-    .hero.is-medium .hero-body {
-        padding: 9rem 4.5rem;
+    .hero.is-large .hero-body {
+        padding: 12rem 6rem;
     }
 
     .content-section {
@@ -186,11 +205,11 @@ main {
 
     .poster {
         display: flex;
-        margin: -16rem auto 0 auto;
+        margin: -22rem auto 0 auto;
     }
 
     .content-buttons {
-        margin: 1rem auto 0 auto;
+        margin: 1rem auto;
     }
 
     .add-btn {
@@ -216,6 +235,10 @@ main {
 
     .content h2 {
         font-size: 1.5em;
+    }
+
+    #poster-container, #content-info {
+        margin-top: 0rem;
     }
     
     #comment-section {

@@ -56,7 +56,7 @@
 </div> --}}
 
 {{!-- Hero banner for content.backdrop --}}
-<section class="hero is-medium content-hero" style="background: url('{{content.backdrop}}');">
+<section class="hero is-large content-hero" style="background: url('{{content.backdrop}}');">
     <div class="overlay is-overlay"></div>
     <div class="hero-body"></div>
 </section>
@@ -82,7 +82,7 @@
         </div>
     </div>
     {{!-- container for content info --}}
-    <div id="content-info" class="content is-flex is-flex-direction-column is-flex-wrap-wrap has-text-grey-lighter">
+    <div id="content-info" class="content is-size-6-touch is-size-5 is-flex is-flex-direction-column is-flex-wrap-wrap has-text-grey-lighter">
         <h2 id="content-title" class="title is-size-4-touch is-size-2 has-text-white mb-0 py-4">
             {{content.title}}
         </h2>
@@ -113,7 +113,7 @@
 
 {{!-- comments section --}}
 <section id="comment-section" class="custom-bg-color has-text-white">
-    <div class="has-text-weight-semibold is-size-5-mobile is-size-4">
+    <div class="comment-number has-text-weight-semibold is-size-5-mobile is-size-4">
         comments.length comments
         {{!-- {{comments.length}} {{format_plural "comment" comments.length}} --}}
     </div>

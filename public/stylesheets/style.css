@@ -188,6 +188,16 @@ main {
 /* watchlist END*/
 
 /* MEDIA QUERIES */
+@media screen and (max-width: 1440px) {
+    .list-container {
+        grid-template-columns: repeat(auto-fill, 15vw);
+    }
+
+    .card img {
+        height: 23vw;
+    }
+}
+
 @media screen and (max-width: 1200px) {
     #searchIcon {
         display: flex;
@@ -229,6 +239,14 @@ main {
     .poster {
         width: 250px;
         height: 375px;
+    }
+
+    .list-container {
+        grid-template-columns: repeat(auto-fill, 22vw);
+    }
+
+    .card img {
+        height: 33vw;
     }
 }
 

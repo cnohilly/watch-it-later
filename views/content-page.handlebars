@@ -110,3 +110,35 @@
         </div>
     </div>
 </section>
+
+{{!-- comments section --}}
+<section id="comment-section" class="custom-bg-color has-text-white">
+    <div class="has-text-weight-semibold is-size-5-mobile is-size-4">
+        comments.length comments
+        {{!-- {{comments.length}} {{format_plural "comment" comments.length}} --}}
+    </div>
+    <!-- comment form -->
+    <article id="comment-form" class="media">
+        <figure class="media-left">
+            <p class="image is-48x48">
+                <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+            </p>
+        </figure>
+        <div class="media-content">
+            <div class="field">
+                <p class="control">
+                    <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control">
+                    <button class="button is-info">Post comment</button>
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <div id="comment-list">
+
+    </div>
+</section>

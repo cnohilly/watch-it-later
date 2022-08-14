@@ -143,7 +143,30 @@ main {
 }
 /* content-page END*/
 
-/* MEDIA QUERIES */
+/* watchlist START*/
+#plan-to-watch-section {
+    padding: 3rem 1rem;
+}
+
+#plan-to-watch-section h2 {
+    text-shadow: 3px 1px 7px black;
+    border-bottom: 2px solid gold;
+}
+
+.list-container {
+    border-radius: 5px;
+    min-height: 50vh;
+    width: 100%;
+    background-color: rgb(23, 25, 42, 50%);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 11vw);
+    justify-content: space-between;
+    align-content: start;
+    gap: 1rem 0.5rem;
+    padding: 1rem;
+}
+/* watchlist END*/
+
 @media screen and (max-width: 1200px) {
     #searchIcon {
         display: flex;

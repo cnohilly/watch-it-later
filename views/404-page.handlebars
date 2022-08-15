@@ -1,6 +1,12 @@
 <div class="card py-1">
     <div class="card-content">
         <div class="title">404 Page Not Found</div>
-        <div class="content">This page does not exist.</div>
+        <div class="content">
+            {{#if message}}
+            {{message}}
+            {{else}}
+            This page does not exist.
+            {{/if}}
+        </div>
     </div>
 </div>

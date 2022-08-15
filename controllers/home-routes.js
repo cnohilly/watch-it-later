@@ -75,17 +75,17 @@ router.get('/watchlist', async (req, res) => {
 
 router.get('/watchlist/:id', async (req, res) => {
     try {
-        const dbWatchlistData = await Watchlist.findAll({
-            where: {
-                user_id: req.params.id
-            }
-        });
-        if (!dbWatchlistData) {
-            res.render('404-page');
+        const dbQuery = await Promise.all([
+            User.findByPk(req.params.id, { attributes: { exclude: ['password'] } }),
+            Watchlist.findAll({ where: { user_id: req.params.id } })
+        ]);
+        if (!dbQuery[0]) {
+            res.render('404-page', { message: 'No user found with this id' });
+            return;
         }
-        const watchlist = dbWatchlistData.get({ plain: true });
+        const watchlist = dbQuery[1].map(entry => entry.get({ plain: true }));
         res.render('watchlist', {
-            content: dbWatchlistData,
+            content: watchlist,
             loggedIn: req.session.loggedIn
         });
     } catch (err) {

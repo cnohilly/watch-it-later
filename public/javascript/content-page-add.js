@@ -7,7 +7,6 @@ async function addToWatchlist(event) {
     const title = document.querySelector('h2.title').textContent;
     const poster = document.querySelector('img.poster').getAttribute('src');
     const year = document.querySelector('span.release-date').textContent.split('/')[2];
-    console.log(poster, year);
     const response = await fetch('/api/watchlist', {
         method: 'POST',
         body: JSON.stringify({

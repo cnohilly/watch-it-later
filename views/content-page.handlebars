@@ -58,10 +58,12 @@
 {{!-- comments section --}}
 <section id="comment-section" class="custom-bg-color has-text-white">
     <div class="comment-number has-text-weight-semibold is-size-5-mobile is-size-4">
-        comments.length comments
+        {{comments.length}} {{format_plural "comment" comments.length}}
         {{!-- {{comments.length}} {{format_plural "comment" comments.length}} --}}
     </div>
     {{!-- comment form --}}
+
+    {{#if loggedIn}}
     <article id="comment-form" class="media">
         <figure class="media-left">
             <p class="image is-48x48">
@@ -81,36 +83,11 @@
             </div>
         </div>
     </article>
+    {{/if}}
 
-    {{!-- {{> comments post.comments}} --}}
-
-    {{!-- hard-coded comment container for easier formatting and styling--}}
-    {{!-- remove once comment route is tested and completed --}}
-    <div id="comment-list" class="is-flex is-flex-direction-column">
-        {{#each this}}
-        <article class="media">
-            <figure class="media-left">
-                <p class="image is-48x48">
-                    {{!-- container for user profile image --}}
-                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                </p>
-            </figure>
-            <div class="media-content">
-                <div class="content">
-                    <p class="has-text-grey-lighter">
-                        <strong class="has-text-info">user.username</strong>
-                        <small>format_date created_at</small>
-                        <br>
-                        {{comment_text}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus,
-                        nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum.
-                        Nunc in tempus turpis.
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </article>
-        {{/each}}
-    </div>
+    {{#each comments as |comment|}}
+    {{> comments comment}}
+    {{/each}}
 </section>
 
 <script src="/javascript/content-page-add.js"></script>

@@ -25,8 +25,20 @@ router.get('/movie/:id', async (req, res) => {
     try {
         let movieData = await getContentData('movie', req.params.id);
         movieData = createContentObj(movieData.data);
+        const commentData = await Comment.findAll({
+            where: {
+                content_type: 'movie',
+                content_id: req.params.id
+            },
+            include: [{
+                model: User,
+                attributes: ['username']
+            }]
+        });
+        const comments = commentData.map(entry => entry.get({ plain: true }));
         res.render('content-page', {
             content: movieData,
+            comments,
             loggedIn: req.session.loggedIn
         });
     } catch (err) {
@@ -37,10 +49,24 @@ router.get('/movie/:id', async (req, res) => {
 
 router.get('/tv/:id', async (req, res) => {
     try {
-        let tvData = await getContentData('tv', req.params.id);
-        tvData = createContentObj(tvData.data);
+        let queryData = await Promise.all([
+            getContentData('tv', req.params.id),
+            Comment.findAll({
+                where: {
+                    content_type: 'tv',
+                    content_id: req.params.id
+                },
+                include: [{
+                    model: User,
+                    attributes: ['username']
+                }]
+            })
+        ]);
+        const tvData = createContentObj(queryData[0].data);
+        const comments = queryData[1].map(entry => entry.get({ plain: true }));
         res.render('content-page', {
             content: tvData,
+            comments,
             loggedIn: req.session.loggedIn
         });
     } catch (err) {

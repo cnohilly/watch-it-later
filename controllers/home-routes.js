@@ -57,11 +57,14 @@ router.get('/watchlist', async (req, res) => {
     }
     try {
         const dbWatchlistData = await Watchlist.findAll({
-            where: { user_id: req.session.loggedIn }
+            where: {
+                user_id: req.session.loggedIn
+            }
         });
-        console.log(dbUserData);
+        const watchlist = dbWatchlistData.map(entry => entry.get({ plain: true }));
+        console.log(watchlist);
         res.render('watchlist', {
-            content: dbWatchlistData,
+            content: watchlist,
             loggedIn: req.session.loggedIn
         });
     } catch (err) {
@@ -80,6 +83,7 @@ router.get('/watchlist/:id', async (req, res) => {
         if (!dbWatchlistData) {
             res.render('404-page');
         }
+        const watchlist = dbWatchlistData.get({ plain: true });
         res.render('watchlist', {
             content: dbWatchlistData,
             loggedIn: req.session.loggedIn

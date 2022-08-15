@@ -102,12 +102,12 @@
         <div class="media-content">
             <div class="field">
                 <p class="control">
-                    <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                    <textarea class="textarea" id="comment-text" placeholder="Add a comment..."></textarea>
                 </p>
             </div>
             <div class="field">
                 <p class="control">
-                    <button class="button is-info">Post comment</button>
+                    <button class="button is-info" id="comment-submit-button" type="submit">Post comment</button>
                 </p>
             </div>
         </div>
@@ -119,4 +119,7 @@
     {{/each}}
 </section>
 
+{{#if loggedIn}}
 <script src="/javascript/content-page-add.js"></script>
+<script src="/javascript/content-page-comment.js"></script>
+{{/if}}

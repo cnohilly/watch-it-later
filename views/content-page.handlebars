@@ -12,38 +12,42 @@
         <div class="content-buttons field is-grouped is-grouped-centered pt-2">
 
             {{!-- dropdown button test --}}
-            {{!-- <p class="control is-expanded cm-margin">
-                <div class="dropdown">
-                    <div class="dropdown-trigger">
-                        <button id="add-list-dropdown-btn" class="add-list-btn button is-success is-fullwidth" aria-haspopup="true" aria-controls="dropdown-menu">
-                            <span>Add to List</span>
-                            <span class="icon is-small">
-                                <i class="fas fa-angle-down" aria-hidden="true"></i>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                        <div class="dropdown-content">
-                            <li class="dropdown-item">
-                                <button class="button is-white is-fullwidth">Plan to Watch</button>
-                            </li>
-                            <div class="dropdown-item">
-                                <button class="button is-white is-fullwidth">Watching</button>
-                            </div>
-                            <div class="dropdown-item">
-                                <button class="button is-white is-fullwidth">Completed</button>
-                            </div>
+            <p class="control is-expanded cm-margin">
+            <div class="dropdown watchlist-dropdown-menu">
+                <div class="dropdown-trigger">
+                    <button id="add-list-dropdown-btn" class="add-list-btn button is-success is-fullwidth"
+                        aria-haspopup="true" aria-controls="dropdown-menu">
+                        <span>Add to List</span>
+                        <span class="icon is-small">
+                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                        <li class="dropdown-item">
+                            <button class="button is-white is-fullwidth watch-status-btn" data-watch-status='0'>Plan to
+                                Watch</button>
+                        </li>
+                        <div class="dropdown-item">
+                            <button class="button is-white is-fullwidth watch-status-btn"
+                                data-watch-status='1'>Watching</button>
+                        </div>
+                        <div class="dropdown-item">
+                            <button class="button is-white is-fullwidth watch-status-btn"
+                                data-watch-status='2'>Completed</button>
                         </div>
                     </div>
                 </div>
-            </p> --}}
-            
+            </div>
+            </p>
+
             {{!-- add to watchlist button --}}
-            <p class="control is-expanded">
+            {{!-- <p class="control is-expanded">
                 <button id="add-btn" class="add-list-btn button is-success is-fullwidth">
                     Add to watchlist
                 </button>
-            </p>
+            </p> --}}
             <p class="control">
                 <button class="button is-danger">
                     <span class="icon is-small">

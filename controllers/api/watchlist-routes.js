@@ -21,7 +21,8 @@ router.post('/', withAuth, async (req, res) => {
             content_id: req.body.id,
             content_title: req.body.title,
             poster_path: req.body.poster,
-            release_year: req.body.year
+            release_year: req.body.year,
+            status: req.body.status
         });
         res.json(dbWatchData);
     } catch (err) {

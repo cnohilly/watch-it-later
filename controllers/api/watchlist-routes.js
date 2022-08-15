@@ -59,26 +59,22 @@ router.put('/tv/:id', withAuth, async (req, res) => {
     }
 });
 
-
-
-router.delete('/:id', (req, res) => {
-    Vote.destroy({
-        where: {
-            id: req.params.id
-        }
-    })
-        .then(dbUserData => {
-            if (!dbUserData) {
-                res.status(404).json({ message: 'No user found with this id' });
-                return;
+router.delete('/:id', async (req, res) => {
+    try {
+        const dbWatchData = await Watchlist.destroy({
+            where: {
+                id: req.params.id
             }
-            res.json(dbUserData);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
         });
+        if (!dbWatchData) {
+            res.status(404).json({ message: 'No watchlist entry with this id.' });
+            return;
+        }
+        res.json(dbWatchData);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
 });
-
 
 module.exports = router;

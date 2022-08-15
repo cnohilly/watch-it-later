@@ -25,7 +25,6 @@ router.get('/movie/:id', async (req, res) => {
     try {
         let movieData = await getContentData('movie', req.params.id);
         movieData = createContentObj(movieData.data);
-        console.log(movieData);
         res.render('content-page', {
             content: movieData,
             loggedIn: req.session.loggedIn
@@ -40,7 +39,6 @@ router.get('/tv/:id', async (req, res) => {
     try {
         let tvData = await getContentData('tv', req.params.id);
         tvData = createContentObj(tvData.data);
-        console.log(tvData);
         res.render('content-page', {
             content: tvData,
             loggedIn: req.session.loggedIn
@@ -62,7 +60,6 @@ router.get('/watchlist', async (req, res) => {
             }
         });
         const watchlist = dbWatchlistData.map(entry => entry.get({ plain: true }));
-        console.log(watchlist);
         res.render('watchlist', {
             content: watchlist,
             loggedIn: req.session.loggedIn

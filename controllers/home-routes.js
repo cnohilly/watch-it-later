@@ -36,9 +36,6 @@ router.get('/:type/:id', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
     }
-    // fetch('https://api.github.com/users/github')
-    //     .then(res => res.json())
-    //     .then(json => console.log(json));
 });
 
 router.get('/watchlist', async (req, res) => {

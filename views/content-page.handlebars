@@ -1,4 +1,4 @@
-<section>
+{{!-- <section>
     <div>{{content.id}}</div>
     <div>{{content.type}}</div>
     <div>{{content.title}}</div>
@@ -8,7 +8,7 @@
     <div>{{content.genres}}</div>
     <img src="{{content.poster}}">
     <img src="{{content.backdrop}}" alt="">
-</section>
+</section> --}}
 {{!--
 <div id="movie-modal" class="modal">
     <div class="modal-background"></div>
@@ -54,3 +54,115 @@
         </footer>
     </div>
 </div> --}}
+
+{{!-- Hero banner for content.backdrop --}}
+<section class="hero is-large content-hero" style="background: url('{{content.backdrop}}');">
+    <div class="overlay is-overlay"></div>
+    <div class="hero-body"></div>
+</section>
+
+{{!-- content-info section --}}
+<section id="content" class="content-section custom-bg-color is-flex is-flex-wrap-wrap">
+    {{!-- container for content.poster and buttons --}}
+    <div id="poster-container">
+        <img class="poster" src="{{content.poster}}">
+        <div class="content-buttons field is-grouped is-grouped-centered pt-2">
+            <p class="control is-expanded">
+                <button class="add-btn button is-success is-fullwidth">
+                    Add to watchlist
+                </button>
+            </p>
+            <p class="control">
+                <button class="button is-link">
+                    <span class="icon is-small">
+                        <i class="fa-solid fa-heart"></i>
+                    </span>
+                </button>
+            </p>
+        </div>
+    </div>
+    {{!-- container for content info --}}
+    <div id="content-info" class="content is-size-6-touch is-size-5 is-flex is-flex-direction-column is-flex-wrap-wrap has-text-grey-lighter">
+        <h2 id="content-title" class="title is-size-4-touch is-size-2 has-text-white mb-0 py-4">
+            {{content.title}}
+        </h2>
+        <p class="has-text-weight-semibold">
+            Type: 
+            <span class="is-uppercase has-text-weight-normal">{{content.type}}</span>
+        </p>
+        <p class="has-text-weight-semibold">
+            Release: 
+            <span class="has-text-weight-normal">{{content.release}}</span>
+        </p>
+        <p class="has-text-weight-semibold">
+            Genre: 
+            <span class="has-text-weight-normal">{{content.genres}}</span>
+        </p>
+        <p class="has-text-weight-semibold">
+            Popularity: 
+            <span class="has-text-weight-normal">{{content.popularity}}</span>
+        </p>
+        <div>
+            <span class="has-text-weight-semibold">Overview:</span>
+            <p>
+                {{content.overview}}
+            </p>
+        </div>
+    </div>
+</section>
+
+{{!-- comments section --}}
+<section id="comment-section" class="custom-bg-color has-text-white">
+    <div class="comment-number has-text-weight-semibold is-size-5-mobile is-size-4">
+        comments.length comments
+        {{!-- {{comments.length}} {{format_plural "comment" comments.length}} --}}
+    </div>
+    {{!-- comment form --}}
+    <article id="comment-form" class="media">
+        <figure class="media-left">
+            <p class="image is-48x48">
+                <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+            </p>
+        </figure>
+        <div class="media-content">
+            <div class="field">
+                <p class="control">
+                    <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control">
+                    <button class="button is-info">Post comment</button>
+                </p>
+            </div>
+        </div>
+    </article>
+
+    {{!-- {{> comments post.comments}} --}}
+
+    {{!-- hard-coded comment container for easier formatting and styling--}}
+    {{!-- remove once comment route is tested and completed --}}
+    <div id="comment-list" class="is-flex is-flex-direction-column">
+        {{#each this}}
+        <article class="media">
+            <figure class="media-left">
+                <p class="image is-48x48">
+                    {{!-- container for user profile image --}}
+                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                </p>
+            </figure>
+            <div class="media-content">
+                <div class="content">
+                    <p class="has-text-grey-lighter">
+                        <strong class="has-text-info">user.username</strong>
+                        <small>format_date created_at</small>
+                        <br>
+                        {{comment_text}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </article>
+        {{/each}}
+    </div>
+</section>

@@ -19,6 +19,7 @@ router.post('/', withAuth, async (req, res) => {
             user_id: req.session.user_id,
             content_type: req.body.type,
             content_id: req.body.id,
+            content_title: req.body.title,
             poster_path: req.body.poster,
             release_year: req.body.year
         });

@@ -29,6 +29,10 @@ Watchlist.init(
             allowNull: false,
             unique: 'watching'
         },
+        content_title: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         poster_path: {
             type: DataTypes.STRING,
             allowNull: false,

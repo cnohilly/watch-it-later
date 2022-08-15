@@ -4,7 +4,7 @@ async function addToWatchlist(event) {
     const loc = window.location.toString().split('/');
     const type = loc[loc.length - 2];
     const id = loc[loc.length - 1];
-    console.lo
+    const title = document.querySelector('h2.title').textContent;
     const poster = document.querySelector('img.poster').getAttribute('src');
     const year = document.querySelector('span.release-date').textContent.split('/')[2];
     console.log(poster, year);
@@ -13,6 +13,7 @@ async function addToWatchlist(event) {
         body: JSON.stringify({
             type,
             id,
+            title,
             poster,
             year
         }),

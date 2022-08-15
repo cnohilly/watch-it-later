@@ -6,19 +6,24 @@ const { getContentData, getPopularContent, getTopRatedContent, createContentObj 
 const { User, Comment, Vote, Watchlist } = require('../models');
 
 router.get('/', async (req, res) => {
-    const contentData = await Promise.all([getPopularContent('movie'), getTopRatedContent('movie'), getPopularContent('tv'), getTopRatedContent('tv')]);
-    for (let x = 0; x < contentData.length; x++) {
-        for (let y = 0; y < contentData[x].data.results.length; y++) {
-            contentData[x].data.results[y] = createContentObj(contentData[x].data.results[y]);
+    try {
+        const contentData = await Promise.all([getPopularContent('movie'), getTopRatedContent('movie'), getPopularContent('tv'), getTopRatedContent('tv')]);
+        for (let x = 0; x < contentData.length; x++) {
+            for (let y = 0; y < contentData[x].data.results.length; y++) {
+                contentData[x].data.results[y] = createContentObj(contentData[x].data.results[y]);
+            }
         }
+        res.render('homepage', {
+            popMovies: contentData[0].data.results,
+            topMovies: contentData[1].data.results,
+            popTV: contentData[2].data.results,
+            topTV: contentData[3].data.results,
+            loggedIn: req.session.loggedIn
+        });
+    } catch (err) {
+        console.log(err);
+        res.render('404-page');
     }
-    res.render('homepage', {
-        popMovies: contentData[0].data.results,
-        topMovies: contentData[1].data.results,
-        popTV: contentData[2].data.results,
-        topTV: contentData[3].data.results,
-        loggedIn: req.session.loggedIn
-    });
 });
 
 router.get('/movie/:id', async (req, res) => {

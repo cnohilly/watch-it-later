@@ -2,12 +2,24 @@ const router = require('express').Router();
 const { response } = require('express');
 const e = require('express');
 const axios = require('axios').default;
-const getContentData = require('../utils/tmdb-api');
-const createContentObj = require('../utils/helpers');
+const { getContentData, getPopularContent, getTopRatedContent, createContentObj } = require('../utils/tmdb-api');
 const { User, Comment, Vote } = require('../models');
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+    const contentData = await Promise.all([getPopularContent('movie'), getTopRatedContent('movie'), getPopularContent('tv'), getTopRatedContent('tv')]);
+    for (let x = 0; x < contentData.length; x++) {
+        for (let y = 0; y < contentData[x].data.results.length; y++) {
+            contentData[x].data.results[y] = createContentObj(contentData[x].data.results[y]);
+        }
+    }
+    contentData.forEach(resData => {
+        console.log(resData.data.results);
+    });
     res.render('homepage', {
+        popMovies: contentData[0].data.results,
+        topMovies: contentData[1].data.results,
+        popTV: contentData[2].data.results,
+        topTV: contentData[3].data.results,
         loggedIn: req.session.loggedIn
     });
 });
@@ -15,7 +27,7 @@ router.get('/', (req, res) => {
 router.get('/:type/:id', async (req, res) => {
     try {
         let movieData = await getContentData(req.params.type, req.params.id);
-        movieData = createContentObj(movieData.data, req.params.type);
+        movieData = createContentObj(movieData.data);
         console.log(movieData);
         res.render('content-page', {
             content: movieData

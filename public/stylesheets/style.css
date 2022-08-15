@@ -38,10 +38,12 @@ main {
     background-color: black;
     color: white;
 }
+
 /* main.handlebars END */
 
 /* login and signup forms START */
-#login-form, #signup-form {
+#login-form,
+#signup-form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -61,10 +63,50 @@ main {
 #signup-form .icon-text span {
     font-size: 14px;
 }
+
 /* login and signup forms END */
 
-.hero-body h2, .hero-body p {
+.hero-body h2,
+.hero-body p {
     text-shadow: 3px 1px 7px black;
+}
+
+/* Scroll Bar styling */
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 45%;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Content Sections Styling */
+.content-row {
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+    width: auto;
+    overflow-x: scroll;
+    padding-top: 0;
+}
+
+.card {
+    transition: 250ms all;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.1);
 }
 
 /* media queries */
@@ -90,13 +132,16 @@ main {
         margin-right: 0 !important;
     }
 
-    #login-form, #signup-form {
+    #login-form,
+    #signup-form {
         max-width: 55% !important;
     }
 }
 
 @media screen and (max-width: 769px) {
-    #login-form, #signup-form {
+
+    #login-form,
+    #signup-form {
         max-width: 80% !important;
         padding: 1.25rem;
     }

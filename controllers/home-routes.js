@@ -3,7 +3,7 @@ const { response } = require('express');
 const e = require('express');
 const axios = require('axios').default;
 const { getContentData, getPopularContent, getTopRatedContent, createContentObj } = require('../utils/tmdb-api');
-const { User, Comment, Vote } = require('../models');
+const { User, Comment, Vote, Watchlist } = require('../models');
 
 router.get('/', async (req, res) => {
     const contentData = await Promise.all([getPopularContent('movie'), getTopRatedContent('movie'), getPopularContent('tv'), getTopRatedContent('tv')]);
@@ -27,7 +27,8 @@ router.get('/movie/:id', async (req, res) => {
         movieData = createContentObj(movieData.data);
         console.log(movieData);
         res.render('content-page', {
-            content: movieData
+            content: movieData,
+            loggedIn: req.session.loggedIn
         });
     } catch (err) {
         console.log(err);
@@ -41,7 +42,8 @@ router.get('/tv/:id', async (req, res) => {
         tvData = createContentObj(tvData.data);
         console.log(tvData);
         res.render('content-page', {
-            content: tvData
+            content: tvData,
+            loggedIn: req.session.loggedIn
         });
     } catch (err) {
         console.log(err);
@@ -54,11 +56,34 @@ router.get('/watchlist', async (req, res) => {
         res.redirect('/login');
     }
     try {
-        const dbUserData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] }
+        const dbWatchlistData = await Watchlist.findAll({
+            where: { user_id: req.session.loggedIn }
         });
         console.log(dbUserData);
-        res.render('homepage');
+        res.render('watchlist', {
+            content: dbWatchlistData,
+            loggedIn: req.session.loggedIn
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+router.get('/watchlist/:id', async (req, res) => {
+    try {
+        const dbWatchlistData = await Watchlist.findAll({
+            where: {
+                user_id: req.params.id
+            }
+        });
+        if (!dbWatchlistData) {
+            res.render('404-page');
+        }
+        res.render('watchlist', {
+            content: dbWatchlistData,
+            loggedIn: req.session.loggedIn
+        });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

@@ -26,9 +26,13 @@ Comment.init(
         key: 'id'
       }
     },
-    movie_id: {
+    content_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    },
+    content_type: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   },
   {

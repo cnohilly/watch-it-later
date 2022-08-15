@@ -3,7 +3,7 @@ const { response } = require('express');
 const e = require('express');
 const axios = require('axios').default;
 const { getContentData, getPopularContent, getTopRatedContent, createContentObj } = require('../utils/tmdb-api');
-const { User, Comment, Vote } = require('../models');
+const { User, Comment, Vote, Watchlist } = require('../models');
 
 router.get('/', async (req, res) => {
     const contentData = await Promise.all([getPopularContent('movie'), getTopRatedContent('movie'), getPopularContent('tv'), getTopRatedContent('tv')]);
@@ -12,9 +12,6 @@ router.get('/', async (req, res) => {
             contentData[x].data.results[y] = createContentObj(contentData[x].data.results[y]);
         }
     }
-    contentData.forEach(resData => {
-        console.log(resData.data.results);
-    });
     res.render('homepage', {
         popMovies: contentData[0].data.results,
         topMovies: contentData[1].data.results,
@@ -24,17 +21,33 @@ router.get('/', async (req, res) => {
     });
 });
 
-router.get('/:type/:id', async (req, res) => {
+router.get('/movie/:id', async (req, res) => {
     try {
-        let movieData = await getContentData(req.params.type, req.params.id);
+        let movieData = await getContentData('movie', req.params.id);
         movieData = createContentObj(movieData.data);
         console.log(movieData);
         res.render('content-page', {
-            content: movieData
+            content: movieData,
+            loggedIn: req.session.loggedIn
         });
     } catch (err) {
         console.log(err);
-        res.status(500).json(err);
+        res.render('404-page');
+    }
+});
+
+router.get('/tv/:id', async (req, res) => {
+    try {
+        let tvData = await getContentData('tv', req.params.id);
+        tvData = createContentObj(tvData.data);
+        console.log(tvData);
+        res.render('content-page', {
+            content: tvData,
+            loggedIn: req.session.loggedIn
+        });
+    } catch (err) {
+        console.log(err);
+        res.render('404-page');
     }
 });
 
@@ -43,11 +56,38 @@ router.get('/watchlist', async (req, res) => {
         res.redirect('/login');
     }
     try {
-        const dbUserData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] }
+        const dbWatchlistData = await Watchlist.findAll({
+            where: {
+                user_id: req.session.loggedIn
+            }
         });
-        console.log(dbUserData);
-        res.render('homepage');
+        const watchlist = dbWatchlistData.map(entry => entry.get({ plain: true }));
+        console.log(watchlist);
+        res.render('watchlist', {
+            content: watchlist,
+            loggedIn: req.session.loggedIn
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+router.get('/watchlist/:id', async (req, res) => {
+    try {
+        const dbWatchlistData = await Watchlist.findAll({
+            where: {
+                user_id: req.params.id
+            }
+        });
+        if (!dbWatchlistData) {
+            res.render('404-page');
+        }
+        const watchlist = dbWatchlistData.get({ plain: true });
+        res.render('watchlist', {
+            content: dbWatchlistData,
+            loggedIn: req.session.loggedIn
+        });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

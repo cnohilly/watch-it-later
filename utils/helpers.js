@@ -4,5 +4,8 @@ module.exports = {
     },
     format_id: title => {
         return title.split(" ").map(word => { return word.toLowerCase() }).join('-');
+    },
+    format_genres: genres => {
+        return genres.join(', ');
     }
 }

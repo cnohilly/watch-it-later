@@ -18,7 +18,11 @@ Vote.init(
         key: 'id'
       }
     },
-    movie_id: {
+    content_type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    content_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
     }
@@ -31,5 +35,6 @@ Vote.init(
     modelName: 'vote'
   }
 );
+
 
 module.exports = Vote;

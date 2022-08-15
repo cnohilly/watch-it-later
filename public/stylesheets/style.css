@@ -107,12 +107,12 @@ main {
     padding-top: 0;
 }
 
-.card {
+.card-hover {
     transition: 250ms all;
     cursor: pointer;
 }
 
-.card:hover {
+.card-hover:hover {
     transform: scale(1.1);
 }
 

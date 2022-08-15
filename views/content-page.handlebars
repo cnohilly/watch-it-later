@@ -1,60 +1,3 @@
-{{!-- <section>
-    <div>{{content.id}}</div>
-    <div>{{content.type}}</div>
-    <div>{{content.title}}</div>
-    <div>{{content.release}}</div>
-    <div>{{content.popularity}}</div>
-    <div>{{content.overview}}</div>
-    <div>{{content.genres}}</div>
-    <img src="{{content.poster}}">
-    <img src="{{content.backdrop}}" alt="">
-</section> --}}
-{{!--
-<div id="movie-modal" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-card" data-content-id="" data-content-type="">
-        <header class="modal-card-head is-flex is-flex-direction-column is-flex-wrap-wrap has-background-info-dark">
-            <!-- Modal title -->
-            <h2 class="modal-card-title has-text-weight-bold has-text-white is-size-3"></h2>
-        </header>
-        <section class="modal-card-body has-background-dark has-text-white">
-            <div class="is-flex is-flex-direction-row">
-                <!-- Modal image -->
-                <img id="modal-poster-img" class="m-2" src="" alt="">
-                <ul class="m-2 is-flex is-flex-wrap-wrap is-flex-direction-column">
-                    <!-- Modal content -->
-                    <li id="modal-release">
-                        <h3>Release:</h3>
-                        <p></p>
-                    </li>
-                    <li id="modal-type">
-                        <h3>Type:</h3>
-                        <p></p>
-                    </li>
-                    <li id="modal-genre">
-                        <h3>Genre:</h3>
-                        <p></p>
-                    </li>
-                    <li id="modal-popularity">
-                        <h3>Popularity:</h3>
-                        <p></p>
-                    </li>
-                </ul>
-            </div>
-            <!-- Modal description -->
-            <div id="modal-movie-description" class="m-2">
-                <h3>Description:</h3>
-                <p>
-                </p>
-            </div>
-        </section>
-        <footer class="modal-card-foot is-flex is-flex is-justify-content-space-between has-background-info-dark">
-            <button id="modal-watchlist-btn" class="button is-success">Add to Watchlist</button>
-            <button id="modal-cancel-btn" class="button is-danger">Cancel</button>
-        </footer>
-    </div>
-</div> --}}
-
 {{!-- Hero banner for content.backdrop --}}
 <section class="hero is-large content-hero" style="background: url('{{content.backdrop}}');">
     <div class="overlay is-overlay"></div>
@@ -82,24 +25,25 @@
         </div>
     </div>
     {{!-- container for content info --}}
-    <div id="content-info" class="content is-size-6-touch is-size-5 is-flex is-flex-direction-column is-flex-wrap-wrap has-text-grey-lighter">
+    <div id="content-info"
+        class="content is-size-6-touch is-size-5 is-flex is-flex-direction-column is-flex-wrap-wrap has-text-grey-lighter">
         <h2 id="content-title" class="title is-size-4-touch is-size-2 has-text-white mb-0 py-4">
             {{content.title}}
         </h2>
         <p class="has-text-weight-semibold">
-            Type: 
+            Type:
             <span class="is-uppercase has-text-weight-normal">{{content.type}}</span>
         </p>
         <p class="has-text-weight-semibold">
-            Release: 
-            <span class="has-text-weight-normal">{{content.release}}</span>
+            Release:
+            <span class="has-text-weight-normal release-date">{{content.release}}</span>
         </p>
         <p class="has-text-weight-semibold">
-            Genre: 
-            <span class="has-text-weight-normal">{{content.genres}}</span>
+            Genre:
+            <span class="has-text-weight-normal">{{format_genres content.genres}}</span>
         </p>
         <p class="has-text-weight-semibold">
-            Popularity: 
+            Popularity:
             <span class="has-text-weight-normal">{{content.popularity}}</span>
         </p>
         <div>
@@ -157,7 +101,9 @@
                         <strong class="has-text-info">user.username</strong>
                         <small>format_date created_at</small>
                         <br>
-                        {{comment_text}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+                        {{comment_text}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus,
+                        nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum.
+                        Nunc in tempus turpis.
                         <br>
                     </p>
                 </div>
@@ -166,3 +112,5 @@
         {{/each}}
     </div>
 </section>
+
+<script src="/javascript/watchlist.js"></script>

@@ -25,7 +25,6 @@ function getTopRatedContent(type) {
 }
 
 function createContentObj(data, type) {
-    console.log(data);
     let contentObj = {
         id: ((data.id) ? data.id : null),
         type: ((data.title) ? 'movie' : 'tv'),

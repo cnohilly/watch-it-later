@@ -12,11 +12,11 @@
 </section>
 <!--End of Hero Section-->
 {{!-- Content Sections --}}
-<section class="mt-6" id="pop-movies-section">
+<section class="mt-6" id="popular-movies-section">
     <h3 class="title has-text-centered is-size-4 pop-movies">Popular Movies</h3>
     <div class="content-row pb-6 pl-4">
         <div class="container mx-0">
-            <div class="columns mt-5 is-8 is-variable card-container" id="pop-movies-container">
+            <div class="columns mt-5 is-8 is-variable card-container" id="popular-movies-container">
                 {{#each popMovies as |content-info|}}
                 {{> content-card content-info}}
                 {{/each}}
@@ -36,11 +36,11 @@
         </div>
     </div>
 </section>
-<section class="mt-6" id="pop-tv-section">
+<section class="mt-6" id="popular-tv-section">
     <h3 class="title has-text-centered is-size-4 pop-tv">Popular TV</h3>
     <div class="content-row pb-6 pl-4">
         <div class="container mx-0">
-            <div class="columns mt-5 is-8 is-variable card-container" id="pop-tv-container">
+            <div class="columns mt-5 is-8 is-variable card-container" id="popular-tv-container">
                 {{#each popTV as |content-info|}}
                 {{> content-card content-info}}
                 {{/each}}

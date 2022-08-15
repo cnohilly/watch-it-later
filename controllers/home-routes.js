@@ -75,7 +75,6 @@ router.get('/watchlist/:id', async (req, res) => {
         for (let i = 0; i < watchlist.length; i++) {
             watchlist[i].isCurrentUser = (req.session.loggedIn) ? (req.session.user_id == req.params.id) : false;
         }
-        console.log(watchlist);
         // entry.isCurrentUser = ((req.session.loggedIn) ? (req.session.user_id == entry.user_id) : false);
         res.render('watchlist', {
             content: watchlist,

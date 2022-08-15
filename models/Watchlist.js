@@ -16,15 +16,26 @@ Watchlist.init(
             references: {
                 model: 'user',
                 key: 'id'
-            }
+            },
+            unique: 'watching'
         },
         content_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            unique: 'watching'
         },
         content_type: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: 'watching'
+        },
+        poster_path: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        release_year: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         },
         status: {
             type: DataTypes.INTEGER,
@@ -41,8 +52,8 @@ Watchlist.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'vote'
+        modelName: 'watchlist'
     }
 );
 
-module.exports = Vote;
+module.exports = Watchlist;

@@ -12,9 +12,6 @@ router.get('/', async (req, res) => {
             contentData[x].data.results[y] = createContentObj(contentData[x].data.results[y]);
         }
     }
-    contentData.forEach(resData => {
-        console.log(resData.data.results);
-    });
     res.render('homepage', {
         popMovies: contentData[0].data.results,
         topMovies: contentData[1].data.results,
@@ -24,9 +21,9 @@ router.get('/', async (req, res) => {
     });
 });
 
-router.get('/:type/:id', async (req, res) => {
+router.get('/movie/:id', async (req, res) => {
     try {
-        let movieData = await getContentData(req.params.type, req.params.id);
+        let movieData = await getContentData('movie', req.params.id);
         movieData = createContentObj(movieData.data);
         console.log(movieData);
         res.render('content-page', {
@@ -34,7 +31,21 @@ router.get('/:type/:id', async (req, res) => {
         });
     } catch (err) {
         console.log(err);
-        res.status(500).json(err);
+        res.render('404-page');
+    }
+});
+
+router.get('/tv/:id', async (req, res) => {
+    try {
+        let tvData = await getContentData('tv', req.params.id);
+        tvData = createContentObj(tvData.data);
+        console.log(tvData);
+        res.render('content-page', {
+            content: tvData
+        });
+    } catch (err) {
+        console.log(err);
+        res.render('404-page');
     }
 });
 

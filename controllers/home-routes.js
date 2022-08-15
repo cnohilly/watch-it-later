@@ -52,21 +52,8 @@ router.get('/tv/:id', async (req, res) => {
 router.get('/watchlist', async (req, res) => {
     if (!req.session.loggedIn) {
         res.redirect('/login');
-    }
-    try {
-        const dbWatchlistData = await Watchlist.findAll({
-            where: {
-                user_id: req.session.loggedIn
-            }
-        });
-        const watchlist = dbWatchlistData.map(entry => entry.get({ plain: true }));
-        res.render('watchlist', {
-            content: watchlist,
-            loggedIn: req.session.loggedIn
-        });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
+    } else {
+        res.redirect('/watchlist/' + req.session.user_id);
     }
 });
 
@@ -80,10 +67,20 @@ router.get('/watchlist/:id', async (req, res) => {
             res.render('404-page', { message: 'No user found with this id' });
             return;
         }
+        let isCurrentUser = false;
+        if (req.session.loggedIn) {
+            isCurrentUser = req.session.user_id == req.params.id;
+        }
         const watchlist = dbQuery[1].map(entry => entry.get({ plain: true }));
+        for (let i = 0; i < watchlist.length; i++) {
+            watchlist[i].isCurrentUser = (req.session.loggedIn) ? (req.session.user_id == req.params.id) : false;
+        }
+        console.log(watchlist);
+        // entry.isCurrentUser = ((req.session.loggedIn) ? (req.session.user_id == entry.user_id) : false);
         res.render('watchlist', {
             content: watchlist,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            isCurrentUser: (req.session.loggedIn) ? (req.session.user_id == req.params.id) : false
         });
     } catch (err) {
         console.log(err);

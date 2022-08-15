@@ -10,7 +10,9 @@
         </div>
         <footer class="card-footer">
             <div class="card-footer-item">
+                {{#if isCurrentUser}}
                 <button class="button is-danger is-inverted is-fullwidth">Remove</button>
+                {{/if}}
             </div>
         </footer>
     </div>

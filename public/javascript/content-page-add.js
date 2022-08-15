@@ -26,4 +26,11 @@ async function addToWatchlist(event) {
     }
 }
 
-document.querySelector('.add-btn').addEventListener('click', addToWatchlist);
+// for displaying dropdown menu
+$(document).ready(function() {
+    $("#add-list-dropdown-btn").click(function() {
+        $(".dropdown").toggleClass("is-active")
+    });
+});
+
+document.querySelector('#add-btn').addEventListener('click', addToWatchlist);

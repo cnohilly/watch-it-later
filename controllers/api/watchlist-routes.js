@@ -31,14 +31,12 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
-    console.log('input request');
-    console.log(req.body);
-    console.log(req.params);
+router.put('/:id', withAuth, async (req, res) => {
     try {
         const dbWatchData = await Watchlist.update(req.body, {
             where: {
-                id: req.params.id
+                id: req.params.id,
+                user_id: req.session.user_id
             }
         });
         res.json(dbWatchData);

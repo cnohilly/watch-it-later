@@ -8,13 +8,11 @@ function cardDropdownHandler(event) {
         removeFromWatchlist(card, id);
     } else {
         const newStatus = $(this).attr('data-watch-status');
-        console.log(newStatus);
         changeWatchStatus(card, id, newStatus);
     }
 }
 
 async function changeWatchStatus(card, id, status) {
-    console.log(status);
     try {
         const response = await fetch('/api/watchlist/' + id, {
             method: 'PUT',
@@ -22,10 +20,9 @@ async function changeWatchStatus(card, id, status) {
                 status
             }),
             headers: {
-                'Content-Type': 'applications/json'
+                'Content-Type': 'application/json'
             }
         });
-        console.log(response);
         if (response.ok) {
             card.appendTo($('ul.card-container[data-status-list="' + status + '"]'));
         } else {

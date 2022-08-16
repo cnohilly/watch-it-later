@@ -1,5 +1,10 @@
+{{!-- Change user profile functionality --}}
+
+{{!-- All user comments --}}
 <section id="comment-section" class="custom-bg-color has-text-white">
+    <p class="has-text-weight-semibold">Your Comments</p>
     {{#each comments as |comment|}}
     {{> comments comment}}
     {{/each}}
 </section>
+

@@ -7,7 +7,12 @@ const { User, Comment, Vote, Watchlist } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
-        const contentData = await Promise.all([getPopularContent('movie'), getTopRatedContent('movie'), getPopularContent('tv'), getTopRatedContent('tv')]);
+        const contentData = await Promise.all([
+            getPopularContent('movie'),
+            getTopRatedContent('movie'),
+            getPopularContent('tv'),
+            getTopRatedContent('tv')
+        ]);
         for (let x = 0; x < contentData.length; x++) {
             for (let y = 0; y < contentData[x].data.results.length; y++) {
                 contentData[x].data.results[y] = createContentObj(contentData[x].data.results[y]);
@@ -92,7 +97,9 @@ router.get('/watchlist/:id', async (req, res) => {
     try {
         const dbQuery = await Promise.all([
             User.findByPk(req.params.id, { attributes: { exclude: ['password'] } }),
-            Watchlist.findAll({ where: { user_id: req.params.id } })
+            Watchlist.findAll({ where: { user_id: req.params.id, status: 0 } }),
+            Watchlist.findAll({ where: { user_id: req.params.id, status: 1 } }),
+            Watchlist.findAll({ where: { user_id: req.params.id, status: 2 } })
         ]);
         if (!dbQuery[0]) {
             res.render('404-page', { message: 'No user found with this id' });
@@ -102,13 +109,18 @@ router.get('/watchlist/:id', async (req, res) => {
         if (req.session.loggedIn) {
             isCurrentUser = req.session.user_id == req.params.id;
         }
-        const watchlist = dbQuery[1].map(entry => entry.get({ plain: true }));
-        for (let i = 0; i < watchlist.length; i++) {
-            watchlist[i].isCurrentUser = (req.session.loggedIn) ? (req.session.user_id == req.params.id) : false;
+        let watchlist = [];
+        for (let x = 1; x < dbQuery.length; x++) {
+            watchlist.push(dbQuery[x].map(entry => entry.get({ plain: true })));
+            for (let y = 0; y < watchlist[x - 1].length; y++) {
+                watchlist[x - 1][y].isCurrentUser = (req.session.loggedIn) ? (req.session.user_id == req.params.id) : false;
+            }
         }
         // entry.isCurrentUser = ((req.session.loggedIn) ? (req.session.user_id == entry.user_id) : false);
         res.render('watchlist', {
-            content: watchlist,
+            plan_to_watch: watchlist[0],
+            watching: watchlist[1],
+            completed: watchlist[2],
             loggedIn: req.session.loggedIn,
             isCurrentUser: (req.session.loggedIn) ? (req.session.user_id == req.params.id) : false
         });

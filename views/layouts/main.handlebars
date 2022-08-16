@@ -139,9 +139,16 @@
   </header>
 
   <!-- main -->
-  <main class="is-flex is-flex-direction-column">
-
-    {{{ body }}}
+  <main>
+    <div class="container mt-1 alert-box is-fluid is-hidden">
+      <div class="notification">
+        <button class="delete"></button>
+        <span class="alert-text">Test alert for the user.</span>
+      </div>
+    </div>
+    <div class="is-flex is-flex-direction-column">
+      {{{ body }}}
+    </div>
 
   </main>
 
@@ -158,6 +165,7 @@
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
+  <script src="/javascript/alert-box.js"></script>
 </body>
 
 </html>

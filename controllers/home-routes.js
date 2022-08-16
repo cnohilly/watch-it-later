@@ -7,7 +7,12 @@ const { User, Comment, Vote, Watchlist } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
-        const contentData = await Promise.all([getPopularContent('movie'), getTopRatedContent('movie'), getPopularContent('tv'), getTopRatedContent('tv')]);
+        const contentData = await Promise.all([
+            getPopularContent('movie'),
+            getTopRatedContent('movie'),
+            getPopularContent('tv'),
+            getTopRatedContent('tv')
+        ]);
         for (let x = 0; x < contentData.length; x++) {
             for (let y = 0; y < contentData[x].data.results.length; y++) {
                 contentData[x].data.results[y] = createContentObj(contentData[x].data.results[y]);

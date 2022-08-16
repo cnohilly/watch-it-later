@@ -1,3 +1,4 @@
+
 // async function addToWatchlist(event) {
 //     event.preventDefault();
 
@@ -45,23 +46,29 @@ async function addToWatchlist(event) {
     const poster = document.querySelector('img.poster').getAttribute('src');
     const year = document.querySelector('span.release-date').textContent.split('/')[2];
     const status = $(this).attr('data-watch-status');
-    const response = await fetch('/api/watchlist', {
-        method: 'POST',
-        body: JSON.stringify({
-            type,
-            id,
-            title,
-            poster,
-            year,
-            status
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    try {
+        const response = await fetch('/api/watchlist', {
+            method: 'POST',
+            body: JSON.stringify({
+                type,
+                id,
+                title,
+                poster,
+                year,
+                status
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
-    if (response.ok) {
-        document.location.reload();
+        if (response.ok) {
+            document.location.reload();
+        } else {
+            updateAlertBox(`This ${type} is already in your watchlist.`);
+        }
+    } catch (err) {
+        console.log(err);
     }
 }
 

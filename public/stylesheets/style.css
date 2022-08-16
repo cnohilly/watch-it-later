@@ -36,6 +36,11 @@ body {
     display: none;
 }
 
+.alert-box {
+    position: fixed;
+    z-index: 20;
+}
+
 main {
     flex: 1;
     padding-top: 56px;
@@ -187,6 +192,7 @@ main {
 .dropdown-item {
     padding: 0;
 }
+
 /* for dropdown button END*/
 
 #content-info {
@@ -264,6 +270,7 @@ main {
 .custom-section .card-footer-item {
     padding: 0rem;
 }
+
 /* watchlist END*/
 
 /* MEDIA QUERIES */
@@ -415,6 +422,7 @@ main {
     .cm-margin {
         margin-right: 0rem !important;
     }
+
     /* for dropdown END*/
 }
 
@@ -431,7 +439,7 @@ main {
         height: 65vw;
     }
 
-    .custom-section .card-content {  
+    .custom-section .card-content {
         padding: 0 0.4rem 0.4rem 0.4rem;
     }
 }

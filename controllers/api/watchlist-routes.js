@@ -32,10 +32,12 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 router.put('/:id', withAuth, async (req, res) => {
+    console.log(req.body);
     try {
         const dbWatchData = await Watchlist.update(req.body, {
             where: {
                 id: req.params.id,
+                user_id: req.session.user_id
             }
         });
         res.json(dbWatchData);
@@ -45,21 +47,6 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
-// router.put('/tv/:id', withAuth, async (req, res) => {
-//     try {
-//         const dbWatchData = await Watchlist.update(req.body, {
-//             where: {
-//                 user_id: req.session.user_id,
-//                 content_id: req.params.id,
-//                 content_type: 'tv'
-//             }
-//         })
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
-
 router.delete('/:id', async (req, res) => {
     try {
         const dbWatchData = await Watchlist.destroy({
@@ -67,56 +54,15 @@ router.delete('/:id', async (req, res) => {
                 id: req.params.id
             }
         });
-        if (!dbUserData) {
+        if (!dbWatchData) {
             res.status(404).json({ message: 'No watchlist entry with this id.' });
             return;
         }
-        res.json(dbUserData);
+        res.json(dbWatchData);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
 });
-
-// router.delete('/movie/:id', async (req, res) => {
-//     try {
-//         const dbWatchData = await Watchlist.destroy({
-//             where: {
-//                 user_id: req.session.user_id,
-//                 content_id: req.params.id,
-//                 content_type: 'movie'
-//             }
-//         });
-//         if (!dbWatchData) {
-//             res.status(404).json({ message: 'No watchlist entry with this id.' });
-//             return;
-//         }
-//         res.json(dbWatchData);
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
-
-// router.delete('/tv/:id', async (req, res) => {
-//     try {
-//         const dbWatchData = await Watchlist.destroy({
-//             where: {
-//                 user_id: req.session.user_id,
-//                 content_id: req.params.id,
-//                 content_type: 'tv'
-//             }
-//         });
-//         if (!dbWatchData) {
-//             res.status(404).json({ message: 'No watchlist entry with this id.' });
-//             return;
-//         }
-//         res.json(dbWatchData);
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
-
 
 module.exports = router;

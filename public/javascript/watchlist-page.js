@@ -1,53 +1,58 @@
-async function cardDropdownHandler(event) {
+function cardDropdownHandler(event) {
     event.preventDefault();
 
-
-    const loc = window.location.toString().split('/');
-    const type = $(this).closest('.card').attr('data-content-type');
-    const contentId = $(this).closest('.card').attr('data-content-id');
-
+    const card = $(this).closest('.content-card');
+    const id = card.attr('data-watchlist-id');
     let response;
     if ($(this).hasClass('remove-button')) {
-        console.log(type, contentId, 'remove');
-        reponse = await const response = await fetch('/api/watchlist/' + type + '/' + contentId, {
-            method: 'DELETE',
-        });
+        removeFromWatchlist(card, id);
     } else {
         const newStatus = $(this).attr('data-watch-status');
-        console.log(type, contentId, newStatus);
+        console.log(newStatus);
+        changeWatchStatus(card, id, newStatus);
     }
-
-
-    // try {
-    //     const response = await fetch('/api/watchlist/' + type + '/' + contentId, {
-    //         method: 'DELETE',
-    //     });
-
-    //     if (response.ok) {
-    //         $(this).closest('.content-card').slideUp(250, function () {
-    //             $(this).remove();
-    //         })
-    //     } else {
-    //         updateAlertBox('An error has occurred. Please try again.');
-    //     }
-    // } catch (err) {
-    //     console.log(err);
-    // }
 }
 
-function changeWatchStatus(type, id, status) {
-    return fetch('/api/watchlist/', {
-        method: 'PUT',
-        body: {
-            type,
-            id,
-            status
+async function changeWatchStatus(card, id, status) {
+    console.log(status);
+    try {
+        const response = await fetch('/api/watchlist/' + id, {
+            method: 'PUT',
+            body: JSON.stringify({
+                status
+            }),
+            headers: {
+                'Content-Type': 'applications/json'
+            }
+        });
+        console.log(response);
+        if (response.ok) {
+            card.appendTo($('ul.card-container[data-status-list="' + status + '"]'));
+        } else {
+            updateAlertBox();
         }
-    });
+    } catch (err) {
+        updateAlertBox();
+        console.log(err);
+    }
 }
 
-function removeFromWatchlist(type, id) {
-
+async function removeFromWatchlist(card, id) {
+    try {
+        const response = await fetch('/api/watchlist/' + id, {
+            method: 'DELETE',
+        });
+        if (response.ok) {
+            card.slideUp(250, function () {
+                $(this).remove();
+            })
+        } else {
+            updateAlertBox();
+        }
+    } catch (err) {
+        updateAlertBox();
+        console.log(err);
+    }
 }
 
 // function to display card dropdown menu
@@ -58,4 +63,3 @@ $(document).ready(function () {
 });
 
 $('.watchlist-container').on('click', '.watch-dropdown-btn', cardDropdownHandler);
-console.log('attached');

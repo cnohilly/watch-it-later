@@ -1,0 +1,164 @@
+<!-- HTML for main.handlebars.js -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Watch It Later</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body class="is-flex is-flex-direction-column has-background-dark">
+  <header>
+    <!-- navigation -->
+    <nav class="navbar is-fixed-top is-black" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand px-3">
+        <a class="navbar-item" href="/">
+          <h1 class="has-text-weight-bold is-size-4" id="nav-logo">
+            Watch It Later
+          </h1>
+        </a>
+        <button id="searchIcon" class="navbar-item is-medium p-0">
+          <span class="icon has-text-info is-medium">
+            <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+          </span>
+        </button>
+        <a role="button" class="navbar-burger m-0" aria-label="menu" aria-expanded="false"
+          data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <!-- search field -->
+      <div class="navbar-item navbar-search field has-addons mb-0 search-hide">
+        <div class="control">
+          <span id="menu-search-filter" class="select is-rounded">
+            <select>
+              <option>Movies</option>
+              <option>TV Shows</option>
+            </select>
+          </span>
+        </div>
+        <div class="control is-expanded">
+          <input class="input" type="text" placeholder="Search for a Movie or TV show">
+        </div>
+        <div class="control">
+          <button class="button is-info is-rounded" type="submit" id="search">
+            <span class="icon">
+              <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- navbar menu -->
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Popular
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item has-text-centered" id="nav-pop-mov" href="/#popular-movies-section">
+                Movies
+              </a>
+              <a class="navbar-item has-text-centered" id="nav-pop-tv" href="/#popular-tv-section">
+                TV Shows
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Top Rated
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item has-text-centered" id="nav-watchlist" href="/#top-movies-section">
+                Movies
+              </a>
+              <a class="navbar-item has-text-centered" id="nav-watchlist" href="/#top-tv-section">
+                TV Shows
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <a class="navbar-item has-text-centered" id="nav-pop-mov" href="/watchlist">
+            Watchlist
+          </a>
+          <div class="navbar-item">
+            <div class="buttons">
+              {{#if loggedIn}}
+              <button class="button is-danger is-outlined" id="nav-logout">
+                <span class="icon is-small">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </span>
+                <span>Logout</span>
+              </button>
+              {{else}}
+              <a class="button is-info is-outlined" id="nav-login" href="/login">
+                <span class="icon is-small">
+                  <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                </span>
+                <span>Login</span>
+              </a>
+              <a class="button is-primary is-outlined" id="nav-signup" href="/signup">
+                <span class="icon is-small">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </span>
+                <span>Sign up</span>
+              </a>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- main -->
+  <main>
+    <div class="container mt-1 alert-box is-fluid is-hidden">
+      <div class="notification">
+        <button class="delete"></button>
+        <span class="alert-text">Test alert for the user.</span>
+      </div>
+    </div>
+    <div class="is-flex is-flex-direction-column">
+      {{{ body }}}
+    </div>
+
+  </main>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="has-text-centered has-text-weight-semibold">
+      <p>Made by Kyle Tang, Stephon Treadwell, Chris Nohilly, Braulio Loaiza, and Ian Zyvith</p>
+      <p class="pt-3">&copy; 2022 Watch It Later, Inc.</p>
+    </div>
+  </footer>
+
+  <!-- script -->
+  <script src="/javascript/menu.js"></script>
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
+  <script src="/javascript/alert-box.js"></script>
+</body>
+
+</html>

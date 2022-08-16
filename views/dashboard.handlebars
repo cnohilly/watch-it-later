@@ -1,0 +1,16 @@
+{{#if comment.length}}
+<section>
+  <h2>Your Comments</h2>
+  <ol>
+    {{#each comment as |comment|}}
+    <li>
+      {{> comment-info comment}}
+      <a href="/dashboard/edit/{{comment.id}}" class="edit-link">Edit Comment</a>
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+
+{{!-- link javascript files here --}}
+<script src=""></script>

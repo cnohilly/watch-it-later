@@ -1,0 +1,55 @@
+{{!-- container for testing backgrounds for page --}}
+<div class="cm-bg-height">
+    {{!-- Plan To Watch Section --}}
+    <section id="plan-to-watch-section" class="section custom-section py-4">
+        <h2 class="has-text-light is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Plan To Watch</h2>
+        <ul id="plan-to-watch-list" class="list-container card-container">
+
+            {{#each plan_to_watch as |content-info|}}
+            {{> watchlist-cards content-info }}
+            {{/each}}
+
+            {{!-- hard-coded for styling --}}
+            {{!-- card container for watchlist --}}
+            {{!-- <div class="content-card">
+                <div class="card">
+                    <div class="card-image has-text-centered card-info">
+                        <img class="card-poster" src="https://image.tmdb.org/t/p/w500/2l05cFWJacyIsTpsqSgH0wQXe4V.jpg">
+                    </div>
+                    <div class="card-content card-info">
+                        <p class="content-title has-text-weight-semibold">The Empire Strikes Back</p>
+                        <p class="title is-size-6 content-date has-text-grey">1980</p>
+                    </div>
+                    <footer class="card-footer">
+                        <div class="card-footer-item">
+                            <button class="button is-danger is-inverted is-fullwidth">Remove</button>
+                        </div>
+                    </footer>
+                </div>
+            </div> --}}
+
+        </ul>
+    </section>
+
+    <!-- Watching Section-->
+    <section id="watching-section" class="section custom-section py-4">
+        <h2 class="has-text-light is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Watching</h2>
+        <ul id="watching-list" class="list-container card-container">
+            {{#each watching as |content-info|}}
+            {{> watchlist-cards content-info }}
+            {{/each}}
+        </ul>
+    </section>
+
+    <!-- Completed Section-->
+    <section id="completed-section" class="section custom-section py-4">
+        <h2 class="has-text-light is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Completed</h2>
+        <ul id="completed-list" class="list-container card-container">
+            {{#each completed as |content-info|}}
+            {{> watchlist-cards content-info }}
+            {{/each}}
+        </ul>
+    </section>
+</div>
+
+<script src="/javascript/watchlist-remove.js"></script>

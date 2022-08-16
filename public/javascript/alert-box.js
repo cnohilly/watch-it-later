@@ -4,7 +4,9 @@ const alertText = $('.alert-text');
 let alertTimeout;
 
 function updateAlertBox(message) {
-    console.log('test');
+    if (!message) {
+        message = 'An error has occured. Please try again.';
+    }
     if (alertTimeout) {
         clearTimeout(alertTimeout);
     }
@@ -14,4 +16,10 @@ function updateAlertBox(message) {
         alertBox.addClass('is-hidden');
     }, 5000);
 }
-console.log('attached');
+
+$('#dismiss-notification-btn').on('click', function () {
+    if (alertTimeout) {
+        clearTimeout(alertTimeout);
+    }
+    alertBox.addClass('is-hidden');
+});

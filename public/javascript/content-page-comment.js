@@ -22,6 +22,8 @@ async function postComment(event) {
             });
             if (response.ok) {
                 document.location.reload();
+            } else {
+                updateAlertBox();
             }
         } catch (err) {
             console.log(err);

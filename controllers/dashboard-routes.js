@@ -5,8 +5,6 @@ const withAuth = require('../utils/auth');
 
 // get all comments for dashboard
 router.get('/', withAuth, (req, res) => {
-    console.log(req.session);
-    console.log('======================');
     Comment.findAll({
       where: {
         user_id: req.session.user_id
@@ -15,22 +13,13 @@ router.get('/', withAuth, (req, res) => {
         'id',
         'comment_text',
         'user_id',
-        'movie_id',
-        'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+        'content_id',
+        'createdAt'
       ],
       include: [
         {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'user_id', 'movie_id', 'created_at'],
-          include: {
             model: User,
             attributes: ['username']
-          }
-        },
-        {
-          model: User,
-          attributes: ['username']
         }
       ]
     })
@@ -42,9 +31,6 @@ router.get('/', withAuth, (req, res) => {
         console.log(err);
         res.status(500).json(err);
       });
-  });
-  
-  
-
+    });
 
 module.exports = router;

@@ -11,8 +11,32 @@
         <footer class="card-footer">
             <div class="card-footer-item">
                 {{#if isCurrentUser}}
-                <button class="button is-danger is-inverted is-fullwidth remove-button" data-content-id="{{content_id}}"
-                    data-content-type="{{content_type}}">Remove</button>
+                {{!-- <button class="button is-danger is-inverted is-fullwidth remove-button" data-content-id="{{content_id}}"
+                    data-content-type="{{content_type}}">Remove</button> --}}
+                <div class="dropdown is-up card-dropdown-btn is-active">
+                    <div class="dropdown-trigger">
+                        <button class="button is-white is-fullwidth card-dropdown-btn" aria-haspopup="true" aria-controls="dropdown-menu">
+                            Change Status
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                            <li class="dropdown-item">
+                                <button class="button is-white is-fullwidth">Plan to Watch</button>
+                            </li>
+                            <div class="dropdown-item">
+                                <button class="button is-white is-fullwidth">Watching</button>
+                            </div>
+                            <div class="dropdown-item">
+                                <button class="button is-white is-fullwidth">Completed</button>
+                            </div>
+                            <hr class="dropdown-divider">
+                            <div class="dropdown-item">
+                                <button class="remove-button button is-danger is-inverted is-fullwidth">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 {{/if}}
             </div>
         </footer>

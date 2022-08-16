@@ -13,6 +13,8 @@ async function removeFromWatchlist(event) {
             $(this).closest('.content-card').slideUp(250, function () {
                 $(this).remove();
             })
+        } else {
+            updateAlertBox('An error has occurred. Please try again.');
         }
     } catch (err) {
         console.log(err);

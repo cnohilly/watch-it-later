@@ -21,4 +21,11 @@ async function removeFromWatchlist(event) {
     }
 }
 
+// function to display card dropdown menu
+$(document).ready(function() {
+    $(".card-dropdown-btn").on('click', function() {
+        $(this).toggleClass("is-active")
+    });
+});
+
 $('.section').on('click', '.remove-button', removeFromWatchlist);

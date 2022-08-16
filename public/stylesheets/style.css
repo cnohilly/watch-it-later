@@ -172,7 +172,7 @@ main {
     width: 100%;
 }
 
-.dropdown-trigger {
+.content-buttons .dropdown-trigger {
     display: flex;
     width: 100%;
 }
@@ -181,11 +181,11 @@ main {
     margin-right: 0 !important;
 }
 
-.dropdown .add-list-btn {
+.content-buttons .dropdown .add-list-btn {
     margin-right: 1rem;
 }
 
-.dropdown-menu {
+.content-buttons .dropdown-menu {
     min-width: 244px;
 }
 
@@ -271,6 +271,10 @@ main {
     padding: 0rem;
 }
 
+.content-card .dropdown-menu {
+    min-width: 10rem;
+    left: -13px;
+}
 /* watchlist END*/
 
 /* MEDIA QUERIES */
@@ -291,6 +295,11 @@ main {
 
     .search-hide {
         display: none !important;
+    }
+
+    .content-card .dropdown-menu {
+        min-width: 10rem;
+        left: -12px;
     }
 }
 
@@ -343,6 +352,11 @@ main {
 
     .dropdown-menu {
         min-width: 12rem;
+    }
+
+    .content-card .dropdown-menu {
+        min-width: 10rem;
+        left: -12px;
     }
 }
 
@@ -414,7 +428,6 @@ main {
         height: 42vw;
     }
 
-    /* for dropdown START*/
     .content-buttons .dropdown {
         width: 210px;
     }
@@ -423,7 +436,10 @@ main {
         margin-right: 0rem !important;
     }
 
-    /* for dropdown END*/
+    .content-card .dropdown-menu {
+        min-width: 8rem;
+        left: 1.5px;
+    }
 }
 
 @media screen and (max-width: 575px) {
@@ -441,5 +457,10 @@ main {
 
     .custom-section .card-content {
         padding: 0 0.4rem 0.4rem 0.4rem;
+    }
+
+    .content-card .dropdown-menu {
+        min-width: 8rem;
+        left: 1.5px;
     }
 }

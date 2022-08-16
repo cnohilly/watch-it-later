@@ -31,49 +31,13 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-router.put('/movie/:id', withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
         const dbWatchData = await Watchlist.update(req.body, {
             where: {
-                user_id: req.session.user_id,
-                content_id: req.params.id,
-                content_type: 'movie'
-            }
-        })
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
-router.put('/tv/:id', withAuth, async (req, res) => {
-    try {
-        const dbWatchData = await Watchlist.update(req.body, {
-            where: {
-                user_id: req.session.user_id,
-                content_id: req.params.id,
-                content_type: 'tv'
-            }
-        })
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
-router.delete('/movie/:id', async (req, res) => {
-    try {
-        const dbWatchData = await Watchlist.destroy({
-            where: {
-                user_id: req.session.user_id,
-                content_id: req.params.id,
-                content_type: 'movie'
+                id: req.params.id,
             }
         });
-        if (!dbWatchData) {
-            res.status(404).json({ message: 'No watchlist entry with this id.' });
-            return;
-        }
         res.json(dbWatchData);
     } catch (err) {
         console.log(err);
@@ -81,25 +45,78 @@ router.delete('/movie/:id', async (req, res) => {
     }
 });
 
-router.delete('/tv/:id', async (req, res) => {
+// router.put('/tv/:id', withAuth, async (req, res) => {
+//     try {
+//         const dbWatchData = await Watchlist.update(req.body, {
+//             where: {
+//                 user_id: req.session.user_id,
+//                 content_id: req.params.id,
+//                 content_type: 'tv'
+//             }
+//         })
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json(err);
+//     }
+// });
+
+router.delete('/:id', async (req, res) => {
     try {
         const dbWatchData = await Watchlist.destroy({
             where: {
-                user_id: req.session.user_id,
-                content_id: req.params.id,
-                content_type: 'tv'
+                id: req.params.id
             }
         });
-        if (!dbWatchData) {
+        if (!dbUserData) {
             res.status(404).json({ message: 'No watchlist entry with this id.' });
             return;
         }
-        res.json(dbWatchData);
+        res.json(dbUserData);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
 });
+
+// router.delete('/movie/:id', async (req, res) => {
+//     try {
+//         const dbWatchData = await Watchlist.destroy({
+//             where: {
+//                 user_id: req.session.user_id,
+//                 content_id: req.params.id,
+//                 content_type: 'movie'
+//             }
+//         });
+//         if (!dbWatchData) {
+//             res.status(404).json({ message: 'No watchlist entry with this id.' });
+//             return;
+//         }
+//         res.json(dbWatchData);
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json(err);
+//     }
+// });
+
+// router.delete('/tv/:id', async (req, res) => {
+//     try {
+//         const dbWatchData = await Watchlist.destroy({
+//             where: {
+//                 user_id: req.session.user_id,
+//                 content_id: req.params.id,
+//                 content_type: 'tv'
+//             }
+//         });
+//         if (!dbWatchData) {
+//             res.status(404).json({ message: 'No watchlist entry with this id.' });
+//             return;
+//         }
+//         res.json(dbWatchData);
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json(err);
+//     }
+// });
 
 
 module.exports = router;

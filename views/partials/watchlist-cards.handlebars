@@ -1,6 +1,6 @@
 {{!-- card container for watchlist --}}
 <div class="content-card">
-    <div class="card">
+    <div class="card" data-watchlist-id="{{id}}">
         <div class="card-image has-text-centered card-info">
             <img class="card-poster" src="{{poster_path}}">
         </div>
@@ -8,41 +8,46 @@
             <p class="content-title has-text-weight-semibold">{{content_title}}</p>
             <p class="title is-size-6 content-date has-text-grey">{{release}}</p>
         </div>
+        {{#if isCurrentUser}}
         <footer class="card-footer">
             <div class="card-footer-item">
-                {{#if isCurrentUser}}
-                {{!-- <button class="button is-danger is-inverted is-fullwidth remove-button" data-content-id="{{content_id}}"
-                    data-content-type="{{content_type}}">Remove</button> --}}
-                    
+                {{!-- <button class="button is-danger is-inverted is-fullwidth remove-button"
+                    data-content-id="{{content_id}}" data-content-type="{{content_type}}">Remove</button> --}}
+
                 <div class="dropdown is-up card-dropdown-btn">
                     <div class="dropdown-trigger">
-                        <button class="button is-white is-fullwidth card-dropdown-btn" aria-haspopup="true" aria-controls="dropdown-menu">
+                        <button class="button is-white is-fullwidth card-dropdown-btn" aria-haspopup="true"
+                            aria-controls="dropdown-menu">
                             Change Status
                         </button>
                     </div>
                     <div class="dropdown-menu" id="dropdown-menu" role="menu">
                         <div class="dropdown-content">
                             <div class="dropdown-item">
-                                <button class="button is-white is-fullwidth">Plan to Watch</button>
+                                <button class="button is-white is-fullwidth watch-dropdown-btn"
+                                    data-watch-status="0">Plan
+                                    to Watch</button>
                             </div>
                             <div class="dropdown-item">
-                                <button class="button is-white is-fullwidth">Watching</button>
+                                <button class="button is-white is-fullwidth watch-dropdown-btn"
+                                    data-watch-status="1">Watching</button>
                             </div>
                             <div class="dropdown-item">
-                                <button class="button is-white is-fullwidth">Completed</button>
+                                <button class="button is-white is-fullwidth watch-dropdown-btn"
+                                    data-watch-status="2">Completed</button>
                             </div>
                             <hr class="dropdown-divider">
                             <div class="dropdown-item">
-                                <button class="remove-button button is-danger is-inverted is-fullwidth"  
-                                data-content-id="{{content_id}}" data-content-type="{{content_type}}">
+                                <button
+                                    class="remove-button button is-danger is-inverted is-fullwidth watch-dropdown-btn">
                                     Remove
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                {{/if}}
             </div>
         </footer>
+        {{/if}}
     </div>
 </div>

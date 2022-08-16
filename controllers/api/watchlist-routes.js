@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { User, Comment, Vote, Watchlist } = require('../../models');
+const { Watchlist } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -31,13 +31,14 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
+    console.log('input request');
     console.log(req.body);
+    console.log(req.params);
     try {
         const dbWatchData = await Watchlist.update(req.body, {
             where: {
-                id: req.params.id,
-                user_id: req.session.user_id
+                id: req.params.id
             }
         });
         res.json(dbWatchData);

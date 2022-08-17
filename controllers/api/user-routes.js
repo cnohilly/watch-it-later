@@ -96,11 +96,11 @@ router.post('/logout', (req, res) => {
 
 // PUT route to change username
 router.put('/:id', withAuth, (req, res) => {
-  Post.update({
+  User.update({
           username: req.body.username
       }, {
           where: {
-              id: req.params.id
+              id: req.session.id
           }
       }).then(dbUserData => {
           if (!dbUserData) {

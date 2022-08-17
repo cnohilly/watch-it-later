@@ -3,14 +3,11 @@ async function updateUser(event) {
     event.preventDefault();
   
     let newUser= $('#newuser-input').val();
-    const id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-      ];
-      
-    const response = await fetch(`/api/users/${{id}}`, {
+
+    const response = await fetch(`/api/users`, {
       method: 'PUT',
       body: JSON.stringify({
-        username: newUser
+        newUser
       }),
       headers: {
         'Content-Type': 'application/json'

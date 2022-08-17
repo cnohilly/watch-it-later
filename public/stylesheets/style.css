@@ -171,6 +171,13 @@ main {
     object-fit: cover;
 }
 
+#rating {
+    border-radius: 25%;
+    background: orange;
+    text-shadow: none;
+    color: black;
+}
+
 .star {
     padding-top: 10px;
 }

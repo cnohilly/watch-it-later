@@ -14,6 +14,7 @@ router.get('/', withAuth, (req, res) => {
         'comment_text',
         'user_id',
         'content_id',
+        'content_type',
         'createdAt'
       ],
       include: [

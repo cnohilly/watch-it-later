@@ -22,11 +22,16 @@ function searchContent(query, type) {
 // showMovies(apiUrl);
 
     function search() {
-    console.log('This button works!');
-    console.log(apiUrl);
+    const type = $('.search-filter-dropdown').val().trim();
+    let searchQuery= $('#search-input').val().trim();
+    searchQuery = searchQuery.split(' ').join('+');
+    document.location.replace('/search/' + type + '/' + searchQuery)
+
+   
     fetch(apiUrl).then(res => res.json())
     .then(function(data){
         console.log(data);
+
     data.results.forEach(element => {
       // Creating elemnts for our data inside the main tag. 
         const el = document.createElement('div');

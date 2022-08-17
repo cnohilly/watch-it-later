@@ -1,4 +1,15 @@
+<div class="cm-bg-height watchlist-container">
+    {{!-- Plan To Watch Section --}}
+    <section id="search-section" class="section custom-section py-4">
+        <h2 class="has-text-light is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Search Results</h2>
+        <ul id="search-list" class="list-container card-container">
+
+            {{#each searchContent as |content-info|}}
+            {{> search-cards content-info }}
+            {{/each}}
+        </ul>
+    </section>
+</div>
 
 
-<script src="/javascript/search.js"></script>
 

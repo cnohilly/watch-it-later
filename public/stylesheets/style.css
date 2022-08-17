@@ -9,7 +9,6 @@
     box-sizing: border-box;
 }
 
-/* smooth scrolling */
 html {
     scroll-behavior: smooth;
 }
@@ -237,6 +236,7 @@ main {
 
 /* watchlist START*/
 .custom-section {
+    scroll-margin-top: 3rem;
     padding: 3rem 2rem;
 }
 
@@ -281,6 +281,24 @@ main {
     left: -13px;
 }
 /* watchlist END*/
+
+/* Homepage START*/
+#home-content-sections {
+    padding: 1rem 8rem 4rem 8rem;
+}
+
+.list-hompage {
+    min-height: 10vh;
+    background-color: #17192A;
+    grid-template-columns: repeat(auto-fill, 11vw);
+    gap: 2rem 2rem;
+}
+
+.list-hompage .card img {
+    height: 17vw;
+}
+
+/* Homepage End */
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 1440px) {

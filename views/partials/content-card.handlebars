@@ -1,4 +1,4 @@
-<div class="column is-3-table is-3-desktop content-card">
+{{!-- <div class="column is-3-table is-3-desktop content-card">
     <a href="/{{type}}/{{id}}">
         <div class="card has-background-dark has-text-light card-hover" data-content-type="{{type}}"
             data-content-id="{{id}}">
@@ -9,11 +9,26 @@
                 <p class="content-title">{{title}}</p>
                 <p class="title is-size-5 content-date has-text-light">{{get_year release}}</p>
             </div>
-            {{!-- {{#if loggedIn}}
+            {{#if loggedIn}}
             <div class="card-footer">
                 <p class="card-footer-item">Add to Watchlist</p>
             </div>
-            {{/if}} --}}
+            {{/if}}
+        </div>
+    </a>
+</div> --}}
+
+<div class="content-card homepage">
+    <a href="/{{type}}/{{id}}">
+        <div class="card">
+            <div class="card-image has-text-centered card-info data-content-type="{{type}}"
+            data-content-id="{{id}}"">
+                <img class="card-poster" src="{{poster}}" alt="Poster image for {{title}}">
+            </div>
+            <div class="card-content card-info">
+                <p class="content-title has-text-weight-semibold">{{title}}</p>
+                <p class="title is-size-6 content-date has-text-grey">{{get_year release}}</p>
+            </div>
         </div>
     </a>
 </div>

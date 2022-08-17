@@ -1,9 +1,9 @@
 {{!-- container for testing backgrounds for page --}}
-<div class="cm-bg-height">
+<div class="cm-bg-height watchlist-container">
     {{!-- Plan To Watch Section --}}
     <section id="plan-to-watch-section" class="section custom-section py-4">
         <h2 class="has-text-light is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Plan To Watch</h2>
-        <ul id="plan-to-watch-list" class="list-container card-container">
+        <ul id="plan-to-watch-list" class="list-container card-container" data-status-list="0">
 
             {{#each plan_to_watch as |content-info|}}
             {{> watchlist-cards content-info }}
@@ -34,7 +34,7 @@
     <!-- Watching Section-->
     <section id="watching-section" class="section custom-section py-4">
         <h2 class="has-text-light is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Watching</h2>
-        <ul id="watching-list" class="list-container card-container">
+        <ul id="watching-list" class="list-container card-container" data-status-list="1">
             {{#each watching as |content-info|}}
             {{> watchlist-cards content-info }}
             {{/each}}
@@ -44,7 +44,7 @@
     <!-- Completed Section-->
     <section id="completed-section" class="section custom-section py-4">
         <h2 class="has-text-light is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Completed</h2>
-        <ul id="completed-list" class="list-container card-container">
+        <ul id="completed-list" class="list-container card-container" data-status-list="2">
             {{#each completed as |content-info|}}
             {{> watchlist-cards content-info }}
             {{/each}}
@@ -52,4 +52,6 @@
     </section>
 </div>
 
-<script src="/javascript/watchlist-remove.js"></script>
+{{#if loggedIn}}
+<script src="/javascript/watchlist-page.js"></script>
+{{/if}}

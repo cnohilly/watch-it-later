@@ -103,13 +103,6 @@ async function createContentPage(req, res, type, id) {
         rating: rating.rating
       }
     }
-    // else {
-    //   user_rating = {
-    //     rated: false,
-    //     rating: 0
-    //   }
-    // }
-    console.log(user_rating);
     // converts query result for comments to the data we want to use
     const comments = dataQuery[3].map((entry) => entry.get({ plain: true }));
     // renders the content-page with the content info, comments, avg rating and whether the user is logged in
@@ -195,7 +188,6 @@ router.get("/signup", (req, res) => {
 //search page
 router.get("/search/:type/:query", async (req, res) => {
   try {
-    console.log(req.params);
     // replaces + signs with spaces in the query
     const query = req.params.query.split("+").join(" ");
     // forces type to be either movie or tv

@@ -31,6 +31,25 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
+router.put("/", withAuth, async (req, res) => {
+  try {
+    const dbVoteData = await Vote.update(
+      {
+        rating: req.body.rating
+      }, {
+      where: {
+        user_id: req.session.user_id,
+        content_id: req.body.content_id,
+        content_type: req.body.content_type,
+      }
+    });
+    res.json(dbVoteData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.delete('/:id', async (req, res) => {
   try {
     const dbVoteData = await Vote.destroy({

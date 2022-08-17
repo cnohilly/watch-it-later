@@ -1,15 +1,15 @@
-<div class="cm-bg-height watchlist-container">
-    {{!-- Plan To Watch Section --}}
-    <section id="search-section" class="section custom-section py-4">
-        <h2 class="has-text-light is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Search Results</h2>
-        <ul id="search-list" class="list-container card-container">
 
+<section id="home-content-sections" class="cm-section-padding has-background-light cm-bg-height">
+    <section id="popular-movies-section" class="section custom-section py-4">
+        <h3 class="pop-movies is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Popular Movies</h3>
+        <div id="popular-movies-container" class="list-container list-hompage">
             {{#each searchContent as |content-info|}}
-            {{> search-cards content-info }}
+            {{> content-card content-info}}
             {{/each}}
-        </ul>
+        </div>
     </section>
-</div>
+</section>
+
 
 
 

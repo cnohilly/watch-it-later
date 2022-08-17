@@ -68,6 +68,13 @@ async function createContentPage(req, res, type, id) {
           [sequelize.fn("AVG", sequelize.cast(sequelize.col('rating'), 'integer')), 'avg_rating']
         ]
       }),
+      Vote.findOne({
+        where: {
+          user_id: req.session.user_id,
+          content_type: type,
+          content_id: req.params.id
+        }
+      }),
       Comment.findAll({
         where: {
           content_type: type,
@@ -88,13 +95,29 @@ async function createContentPage(req, res, type, id) {
     // Gets the avg_rating from the query or defaults to 0, parses the float and sets precision to round to first decimal place
     let avg_rating = votes[0].avg_rating ? votes[0].avg_rating : 0;
     avg_rating = parseFloat(avg_rating).toPrecision(2);
+    let user_rating;
+    if (dataQuery[2]) {
+      const rating = dataQuery[2].get({ plain: true });
+      user_rating = {
+        rated: true,
+        rating: rating.rating
+      }
+    }
+    // else {
+    //   user_rating = {
+    //     rated: false,
+    //     rating: 0
+    //   }
+    // }
+    console.log(user_rating);
     // converts query result for comments to the data we want to use
-    const comments = dataQuery[2].map((entry) => entry.get({ plain: true }));
+    const comments = dataQuery[3].map((entry) => entry.get({ plain: true }));
     // renders the content-page with the content info, comments, avg rating and whether the user is logged in
     res.render("content-page", {
       content,
       comments,
       avg_rating,
+      user_rating,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {

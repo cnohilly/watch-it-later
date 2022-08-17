@@ -289,7 +289,6 @@ main {
 
 .list-hompage {
     min-height: 10vh;
-    background-color: #17192A;
     grid-template-columns: repeat(auto-fill, 11vw);
     gap: 2rem 2rem;
 }
@@ -485,5 +484,13 @@ main {
     .content-card .dropdown-menu {
         min-width: 8rem;
         left: 1.5px;
+    }
+
+    #home-content-sections {
+        padding: 1rem 0rem 2rem 0rem;
+    }
+
+    .list-hompage {
+        gap: 1rem 0rem;
     }
 }

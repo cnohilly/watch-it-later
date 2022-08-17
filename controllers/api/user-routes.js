@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Comment, Vote } = require('../../models');
+const withAuth = require('../../utils/auth')
 
 // get all users
 router.get('/', (req, res) => {
@@ -90,6 +91,49 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+// PUT route to change username
+router.put('/:id', withAuth, (req, res) => {
+  User.update({
+          username: req.body.username
+      }, {
+          where: {
+              id: req.session.id
+          }
+      }).then(dbUserData => {
+          if (!dbUserData) {
+              res.status(404).json({ message: 'No user found with this id' });
+              return;
+          }
+          res.json(dbUserData);
+      })
+      .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+      });
+});
+
+// // PUT route to change password
+// router.put('/:id', withAuth, (req, res) => {
+//   Post.update({
+//           password: req.body.password
+//       }, {
+//           where: {
+//               id: req.params.id
+//           }
+//       }).then(dbUserData => {
+//           if (!dbUserData) {
+//               res.status(404).json({ message: 'No user found with this id' });
+//               return;
+//           }
+//           res.json(dbUserData);
+//       })
+//       .catch(err => {
+//           console.log(err);
+//           res.status(500).json(err);
+//       });
+// });
+
 
 
 router.delete('/:id', (req, res) => {

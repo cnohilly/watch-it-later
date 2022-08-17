@@ -1,4 +1,59 @@
+{{!-- empty space --}}
+<section>
+    </br>
+</section>
+
 {{!-- Change user profile functionality --}}
+<section id="profile-section" class="columns is-centered">
+    <div class="column is-three-fifths custom-bg-color has-text-white">
+
+        <h2>Profile</h2>
+
+        <article class="media">
+            <figure class="media-left">
+                <p class="image">
+                    {{!-- container for user profile image --}}
+                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                </p>
+            </figure>
+
+            <div class="media-content">
+                <div class="content">
+                    <p class="has-text-grey-lighter">
+                        <strong class="has-text-info">USERNAME: {{username}}</strong>
+                    <div>
+                        <div class="field has-addons">
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Enter New Username" id="newuser-input">
+                            </div>
+                            <div class="control">
+                                <a class="button is-info" id="newuser-submit">
+                                    Submit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <p></p>
+                    <strong class="has-text-info">PASSWORD</strong>
+                    <div>
+                        <div class="field has-addons">
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Enter New Password" id="newpass-input">
+                            </div>
+                            <div class="control">
+                                <a class="button is-info" id="newpass-submit">
+                                    Submit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    </br>
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
 
 {{!-- All user comments --}}
 <section id="comment-section" class="custom-bg-color has-text-white">
@@ -11,3 +66,4 @@
     {{/each}}
 
 </section>
+<script src="/javascript/update-user.js"></script>

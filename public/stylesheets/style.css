@@ -167,6 +167,18 @@ main {
     object-fit: cover;
 }
 
+.star {
+    padding-top: 10px;
+}
+
+.fa-star:hover {
+    cursor: pointer;
+}
+
+.checked {
+    color: orange;
+  }
+
 /* for dropdown button START*/
 .content-buttons .dropdown {
     width: 100%;

@@ -9,6 +9,11 @@
     box-sizing: border-box;
 }
 
+/* smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
 /* main.handlebars START */
 body {
     min-height: 100vh;

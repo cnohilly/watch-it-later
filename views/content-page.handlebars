@@ -48,13 +48,20 @@
                     Add to watchlist
                 </button>
             </p> --}}
-            <p class="control">
+            {{!-- <p class="control">
                 <button class="button is-danger">
                     <span class="icon is-small">
                         <i class="fa-solid fa-heart"></i>
                     </span>
                 </button>
-            </p>
+            </p> --}}
+            <div class="control star">
+                <i id="1" class="fa fa-star"></i>
+                <i id="2" class="fa fa-star"></i>
+                <i id="3" class="fa fa-star"></i>
+                <i id="4" class="fa fa-star"></i>
+                <i id="5" class="fa fa-star"></i>
+            </div>
         </div>
     </div>
     {{!-- container for content info --}}
@@ -126,6 +133,7 @@
 {{#if loggedIn}}
 <script src="/javascript/content-page-add.js"></script>
 <script src="/javascript/content-page-comment.js"></script>
+<script src="/javascript/stars.js"></script>
 {{else}}
 <script src="/javascript/content-page-loggedout.js"></script>
 {{/if}}

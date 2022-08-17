@@ -92,26 +92,57 @@ router.post('/logout', (req, res) => {
   }
 });
 
-// PUT route to change username
-router.put('/:id', withAuth, (req, res) => {
-  User.update({
-          username: req.body.username
-      }, {
-          where: {
-              id: req.session.id
-          }
-      }).then(dbUserData => {
-          if (!dbUserData) {
-              res.status(404).json({ message: 'No user found with this id' });
-              return;
-          }
-          res.json(dbUserData);
-      })
-      .catch(err => {
-          console.log(err);
-          res.status(500).json(err);
-      });
+// route to update current user requiring their current password
+router.put('/', withAuth, async (req, res) => {
+  try {
+    let dbUserData = await User.findOne({
+      where: {
+        id: req.session.user_id
+      }
+    });
+    if (!dbUserData.checkPassword(req.body.current_password)) {
+      res.status(400).json({ message: 'Incorrect password!' });
+    }
+    let updateBody = {};
+    if (req.body.username) {
+      updateBody.username = req.body.username;
+    }
+    if (req.body.new_password) {
+      updateBody.password = req.body.new_password;
+    }
+    dbUserData = await User.update(updateBody, {
+      individualHooks: true,
+      where: {
+        id: req.session.user_id
+      }
+    });
+    res.json(dbUserData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
+
+// // PUT route to change username
+// router.put('/:id', withAuth, (req, res) => {
+//   User.update({
+//           username: req.body.username
+//       }, {
+//           where: {
+//               id: req.session.id
+//           }
+//       }).then(dbUserData => {
+//           if (!dbUserData) {
+//               res.status(404).json({ message: 'No user found with this id' });
+//               return;
+//           }
+//           res.json(dbUserData);
+//       })
+//       .catch(err => {
+//           console.log(err);
+//           res.status(500).json(err);
+//       });
+// });
 
 // // PUT route to change password
 // router.put('/:id', withAuth, (req, res) => {

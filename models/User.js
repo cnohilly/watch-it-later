@@ -35,7 +35,6 @@ User.init(
                 isEmail: true
             }
         },
-
         //password column
         password: {
             type: DataTypes.STRING,

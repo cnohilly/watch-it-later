@@ -311,6 +311,14 @@ main {
 
 /* Homepage End */
 
+/* Dashboard Styling */
+
+#profile-secton {
+    border-radius: 1rem;
+}
+
+/* Dashboard End */
+
 /* MEDIA QUERIES */
 @media screen and (max-width: 1440px) {
     .list-container {

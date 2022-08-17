@@ -46,9 +46,9 @@
       <div class="navbar-item navbar-search field has-addons mb-0 search-hide">
         <div class="control">
           <span id="menu-search-filter" class="select is-rounded">
-            <select>
-              <option>Movies</option>
-              <option>TV Shows</option>
+            <select class="search-filter-dropdown">
+              <option value="movie">Movies</option>
+              <option value="tv">TV Shows</option>
             </select>
           </span>
         </div>
@@ -101,6 +101,13 @@
           <div class="navbar-item">
             <div class="buttons">
               {{#if loggedIn}}
+              <a class="button is-info is-outlined" id="nav-dashboard" href="/dashboard">
+                <span class="icon is-small">
+                  <i class="fa-solid fa-bars"></i>
+                </span>
+                <span>Dashboard</span>
+              </a>
+
               <button class="button is-danger is-outlined" id="nav-logout">
                 <span class="icon is-small">
                   <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -132,9 +139,16 @@
   </header>
 
   <!-- main -->
-  <main class="is-flex is-flex-direction-column">
-
-    {{{ body }}}
+  <main>
+    <div class="container mt-1 alert-box is-fluid is-hidden">
+      <div class="notification has-text-centered">
+        <button class="delete" id="dismiss-notification-btn"></button>
+        <span class="alert-text">Test alert for the user.</span>
+      </div>
+    </div>
+    <div class="is-flex is-flex-direction-column">
+      {{{ body }}}
+    </div>
 
   </main>
 
@@ -151,6 +165,7 @@
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
+  <script src="/javascript/alert-box.js"></script>
 </body>
 <script src="/javascript/search.js"></script>
 </html>

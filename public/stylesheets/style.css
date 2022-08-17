@@ -36,6 +36,11 @@ body {
     display: none;
 }
 
+.alert-box {
+    position: fixed;
+    z-index: 20;
+}
+
 main {
     flex: 1;
     padding-top: 56px;
@@ -116,7 +121,6 @@ main {
     transform: scale(1.1);
 }
 
-/* media queries */
 /* content-page START*/
 .hero-body h2,
 .hero-body p,
@@ -126,6 +130,10 @@ main {
 
 .custom-bg-color {
     background-color: var(--shade-color);
+}
+
+.cm-bg-height {
+    min-height: calc(100vh - 204px - 56px);
 }
 
 .content-hero {
@@ -159,6 +167,34 @@ main {
     object-fit: cover;
 }
 
+/* for dropdown button START*/
+.content-buttons .dropdown {
+    width: 100%;
+}
+
+.content-buttons .dropdown-trigger {
+    display: flex;
+    width: 100%;
+}
+
+.cm-margin {
+    margin-right: 0 !important;
+}
+
+.content-buttons .dropdown .add-list-btn {
+    margin-right: 1rem;
+}
+
+.content-buttons .dropdown-menu {
+    min-width: 244px;
+}
+
+.dropdown-item {
+    padding: 0;
+}
+
+/* for dropdown button END*/
+
 #content-info {
     line-height: 2em;
     flex: 1;
@@ -177,8 +213,8 @@ main {
 }
 
 .comment-number {
-    border-bottom: 1px solid rgba(219, 219, 219, .5);
-    padding-bottom: 1rem;
+    border-top: 1px solid rgba(219, 219, 219, .5);
+    padding-top: 1rem;
 }
 
 .media {
@@ -195,46 +231,49 @@ main {
 /* content-page END*/
 
 /* watchlist START*/
-#plan-to-watch-section {
-    padding: 3rem 1rem;
+.custom-section {
+    padding: 3rem 2rem;
 }
 
-#plan-to-watch-section h2 {
+.custom-section h2 {
     text-shadow: 3px 1px 7px black;
     border-bottom: 2px solid gold;
 }
 
 .list-container {
     border-radius: 5px;
-    min-height: 46vh;
+    min-height: 10vh;
     width: 100%;
-    background-color: rgb(23, 25, 42, 50%);
     display: grid;
     grid-template-columns: repeat(auto-fill, 11vw);
     justify-content: space-between;
     align-content: start;
-    gap: 1rem 0.5rem;
-    padding: 1rem;
+    gap: 1.5rem 0.5rem;
 }
 
-#plan-to-watch-list .card-content {
+.custom-section .card-content {
     padding: 0 0.5rem 0.5rem 0.5rem;
 }
 
-#plan-to-watch-list .card-content p {
+.custom-section .card-content p {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-#plan-to-watch-list .card img {
+.custom-section .card img {
     width: 100%;
     height: 17vw;
     object-fit: cover;
 }
 
-#plan-to-watch-list .card-footer-item {
+.custom-section .card-footer-item {
     padding: 0rem;
+}
+
+.content-card .dropdown-menu {
+    min-width: 10rem;
+    left: -13px;
 }
 /* watchlist END*/
 
@@ -244,7 +283,7 @@ main {
         grid-template-columns: repeat(auto-fill, 15vw);
     }
 
-    #plan-to-watch-list .card img {
+    .custom-section .card img {
         height: 23vw;
     }
 }
@@ -256,6 +295,11 @@ main {
 
     .search-hide {
         display: none !important;
+    }
+
+    .content-card .dropdown-menu {
+        min-width: 10rem;
+        left: -12px;
     }
 }
 
@@ -298,8 +342,21 @@ main {
         grid-template-columns: repeat(auto-fill, 22vw);
     }
 
-    #plan-to-watch-list .card img {
+    .custom-section .card img {
         height: 33vw;
+    }
+
+    .cm-bg-height {
+        min-height: calc(100vh - 204px - 52px);
+    }
+
+    .dropdown-menu {
+        min-width: 12rem;
+    }
+
+    .content-card .dropdown-menu {
+        min-width: 10rem;
+        left: -12px;
     }
 }
 
@@ -329,7 +386,7 @@ main {
         margin: 1rem auto;
     }
 
-    .add-btn {
+    .add-list-btn {
         padding-left: 2.5em;
         padding-right: 2.5em;
     }
@@ -367,23 +424,43 @@ main {
         grid-template-columns: repeat(auto-fill, 28vw);
     }
 
-    #plan-to-watch-list .card img {
+    .custom-section .card img {
         height: 42vw;
+    }
+
+    .content-buttons .dropdown {
+        width: 210px;
+    }
+
+    .cm-margin {
+        margin-right: 0rem !important;
+    }
+
+    .content-card .dropdown-menu {
+        min-width: 8rem;
+        left: 1.5px;
     }
 }
 
 @media screen and (max-width: 575px) {
     .list-container {
         grid-template-columns: repeat(auto-fill, 43vw);
-        padding: 0;
-        background-color: rgb(23, 25, 42, 0%);
     }
 
-    #plan-to-watch-list .card img {
+    .custom-section {
+        padding: 3rem 1rem;
+    }
+
+    .custom-section .card img {
         height: 65vw;
     }
 
-    #plan-to-watch-list .card-content {  
+    .custom-section .card-content {
         padding: 0 0.4rem 0.4rem 0.4rem;
+    }
+
+    .content-card .dropdown-menu {
+        min-width: 8rem;
+        left: 1.5px;
     }
 }

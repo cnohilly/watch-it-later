@@ -283,14 +283,13 @@ main {
 /* watchlist END*/
 
 /* Homepage START*/
-#home-content-sections {
+.cm-section-padding {
     padding: 1rem 8rem 4rem 8rem;
 }
 
 .list-hompage {
     min-height: 10vh;
     grid-template-columns: repeat(auto-fill, 11vw);
-    gap: 2rem 2rem;
 }
 
 .list-hompage .card img {
@@ -307,6 +306,10 @@ main {
 
     .custom-section .card img {
         height: 23vw;
+    }
+
+    .cm-section-padding {
+        padding: 1rem 3rem 2rem 3rem;
     }
 }
 
@@ -379,6 +382,10 @@ main {
     .content-card .dropdown-menu {
         min-width: 10rem;
         left: -12px;
+    }
+
+    .cm-section-padding {
+        padding: 1rem 0rem 2rem 0rem;
     }
 }
 
@@ -486,7 +493,7 @@ main {
         left: 1.5px;
     }
 
-    #home-content-sections {
+    .cm-section-padding {
         padding: 1rem 0rem 2rem 0rem;
     }
 

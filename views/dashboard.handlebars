@@ -20,11 +20,33 @@
             <div class="media-content">
                 <div class="content">
                     <p class="has-text-grey-lighter">
-                    <strong class="has-text-info">USERNAME</strong>
-                    <input class="input" id="newuser-input" type="text" placeholder="Type New Username">
+                    <strong class="has-text-info">USERNAME: {{username}}</strong>
+                    <div>
+                        <div class="field has-addons">
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Enter New Username" id="newuser-input">
+                            </div>
+                            <div class="control">
+                                <a class="button is-info" id="newuser-submit">
+                                    Submit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <p></p>
                     <strong class="has-text-info">PASSWORD</strong>
-                    <input class="input" id="newpass-input" type="text" placeholder="Type New Password">
+                    <div>
+                        <div class="field has-addons">
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Enter New Password" id="newpass-input">
+                            </div>
+                            <div class="control">
+                                <a class="button is-info" id="newpass-submit">
+                                    Submit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     </br>
                     </p>
                 </div>
@@ -65,4 +87,6 @@
 {{/each}}
 
 </section>
+
+<script src="/javascript/update-user.js"></script>
 

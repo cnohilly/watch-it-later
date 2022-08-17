@@ -115,26 +115,26 @@ router.put('/:id', withAuth, (req, res) => {
       });
 });
 
-// PUT route to change password
-router.put('/:id', withAuth, (req, res) => {
-  Post.update({
-          password: req.body.password
-      }, {
-          where: {
-              id: req.params.id
-          }
-      }).then(dbUserData => {
-          if (!dbUserData) {
-              res.status(404).json({ message: 'No user found with this id' });
-              return;
-          }
-          res.json(dbUserData);
-      })
-      .catch(err => {
-          console.log(err);
-          res.status(500).json(err);
-      });
-});
+// // PUT route to change password
+// router.put('/:id', withAuth, (req, res) => {
+//   Post.update({
+//           password: req.body.password
+//       }, {
+//           where: {
+//               id: req.params.id
+//           }
+//       }).then(dbUserData => {
+//           if (!dbUserData) {
+//               res.status(404).json({ message: 'No user found with this id' });
+//               return;
+//           }
+//           res.json(dbUserData);
+//       })
+//       .catch(err => {
+//           console.log(err);
+//           res.status(500).json(err);
+//       });
+// });
 
 
 

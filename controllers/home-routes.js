@@ -2,8 +2,9 @@ const router = require('express').Router();
 const { response } = require('express');
 const e = require('express');
 const axios = require('axios').default;
-const { getContentData, getPopularContent, getTopRatedContent, createContentObj } = require('../utils/tmdb-api');
+const { getContentData, getPopularContent, getTopRatedContent, createContentObj, searchContent } = require('../utils/tmdb-api');
 const { User, Comment, Vote, Watchlist } = require('../models');
+
 
 router.get('/', async (req, res) => {
     try {
@@ -133,5 +134,21 @@ router.get('/signup', (req, res) => {
     }
     res.render('signup');
 });
+
+//search page
+router.get('/search/movie/:query', async (req, res) => {
+    try {
+        const query = req.params.query.split('+').join(' ');
+        const searchData = await searchContent(query, 'movie');
+        res.render('search', {
+            searchContent: searchData.data.results,
+            
+            loggedIn: req.session.loggedIn
+        });
+    } catch (err) {
+        console.log(err);
+        res.render('404-page');
+    }
+})
 
 module.exports = router;

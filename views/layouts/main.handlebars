@@ -52,9 +52,9 @@
             </select>
           </span>
         </div>
-        <div class="control is-expanded">
-          <input class="input" type="text" placeholder="Search for a Movie or TV show">
-        </div>
+        <form class="control is-expanded">
+          <input class="input" type="text" placeholder="Search for a Movie or TV show" id="searchInput"/>
+        </form>
         <div class="control">
           <button class="button is-info is-rounded" type="submit" id="search">
             <span class="icon">
@@ -152,5 +152,5 @@
   <script src="/javascript/logout.js"></script>
   {{/if}}
 </body>
-
+<script src="/javascript/search.js"></script>
 </html>

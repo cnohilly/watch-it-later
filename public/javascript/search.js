@@ -12,8 +12,8 @@ const form = document.getElementById('form');
 
 //Search function
 function searchContent(query, type) {
-    var apiUrl = 'https://api.themoviedb.org/3/search/' + type + '?api_key=' + process.env.TMDB_KEY  + '&query=' + query;
-    return axios(apiUrl)
+  var apiUrl = 'https://api.themoviedb.org/3/search/' + type + '?api_key=' + process.env.TMDB_KEY + '&query=' + query;
+  return axios(apiUrl)
 }
 
 
@@ -21,19 +21,20 @@ function searchContent(query, type) {
 //Then it puts those data in the main HTML tag by creating elments for those data.
 // showMovies(apiUrl);
 
-    function search() {
-    const type = $('.search-filter-dropdown').val().trim();
-    let searchQuery= $('#search-input').val().trim();
-    searchQuery = searchQuery.split(' ').join('+');
-    document.location.replace('/search/' + type + '/' + searchQuery)
+function search(event) {
+  event.preventDefault();
+  const type = $('.search-filter-dropdown').val().trim();
+  let searchQuery = $('#search-input').val().trim();
+  searchQuery = searchQuery.split(' ').join('+');
+  document.location.replace('/search/' + type + '/' + searchQuery)
 
-   
-    fetch(apiUrl).then(res => res.json())
-    .then(function(data){
-        console.log(data);
 
-    data.results.forEach(element => {
-      // Creating elemnts for our data inside the main tag. 
+  fetch(apiUrl).then(res => res.json())
+    .then(function (data) {
+      console.log(data);
+
+      data.results.forEach(element => {
+        // Creating elemnts for our data inside the main tag. 
         const el = document.createElement('div');
         const image = document.createElement('img');
         const text = document.createElement('h2');
@@ -43,10 +44,8 @@ function searchContent(query, type) {
         el.appendChild(image);
         el.appendChild(text);
         main.appendChild(el);
-    }); 
-});
+      });
+    });
 
-  }
-  
-
-document.querySelector('#search').addEventListener('click', search);
+}
+$('.search-form').on('submit', search);

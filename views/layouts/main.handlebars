@@ -44,7 +44,7 @@
       </div>
 
       <!-- search field -->
-      <div class="navbar-item navbar-search field has-addons mb-0 search-hide">
+      <form class="navbar-item navbar-search field has-addons mb-0 search-hide search-form">
         <div class="control">
           <span id="menu-search-filter" class="select is-rounded">
             <select class="search-filter-dropdown">
@@ -53,9 +53,9 @@
             </select>
           </span>
         </div>
-        <form class="control is-expanded">
-          <input class="input" type="text" placeholder="Search for a Movie or TV show" id="search-input"/>
-        </form>
+        <div class="control is-expanded">
+          <input class="input" type="text" placeholder="Search for a Movie or TV show" id="search-input" />
+        </div>
         <div class="control">
           <button class="button is-info is-rounded" type="submit" id="search">
             <span class="icon">
@@ -63,7 +63,7 @@
             </span>
           </button>
         </div>
-      </div>
+      </form>
 
       <!-- navbar menu -->
       <div class="navbar-menu">
@@ -169,4 +169,5 @@
   <script src="/javascript/alert-box.js"></script>
 </body>
 <script src="/javascript/search.js"></script>
+
 </html>

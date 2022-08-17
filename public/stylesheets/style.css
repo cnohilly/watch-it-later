@@ -191,7 +191,8 @@ main {
 }
 
 /* for dropdown button START*/
-.content-buttons .dropdown {
+.content-buttons .dropdown,
+.watchlist-dropdown-menu .dropdown-menu {
     width: 100%;
 }
 
@@ -202,10 +203,6 @@ main {
 
 .cm-margin {
     margin-right: 0 !important;
-}
-
-.content-buttons .dropdown-menu {
-    min-width: 244px;
 }
 
 .dropdown-item {

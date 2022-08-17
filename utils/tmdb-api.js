@@ -45,4 +45,10 @@ function createContentObj(data, type) {
     return contentObj;
 }
 
-module.exports = { getContentData, getPopularContent, getTopRatedContent, createContentObj };
+//Search function
+function searchContent(query, type) {
+    var apiUrl = 'https://api.themoviedb.org/3/search/' + type + '?api_key=' + process.env.TMDB_KEY  + '&query=' + query;
+    return axios(apiUrl)
+}
+
+module.exports = { getContentData, getPopularContent, getTopRatedContent, createContentObj, searchContent };

@@ -16,11 +16,18 @@ Vote.init(
       references: {
         model: 'user',
         key: 'id'
-      }
+      },
+      unique: 'vote'
+    },
+    content_type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: 'vote'
     },
     content_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      unique: 'vote'
     },
     rating: {
       type: DataTypes.INTEGER,

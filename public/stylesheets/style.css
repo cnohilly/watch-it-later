@@ -90,17 +90,17 @@ main {
 /* Scroll Bar styling */
 ::-webkit-scrollbar {
     width: 10px;
-    
+
 }
 
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
-    
+
 }
 
 ::-webkit-scrollbar-thumb {
     background: #888;
-    
+
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -181,7 +181,7 @@ main {
 
 .checked {
     color: orange;
-  }
+}
 
 /* for dropdown button START*/
 .content-buttons .dropdown {
@@ -292,6 +292,7 @@ main {
     min-width: 10rem;
     left: -13px;
 }
+
 /* watchlist END*/
 
 /* Homepage START*/

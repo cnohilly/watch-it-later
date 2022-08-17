@@ -33,7 +33,6 @@ async function changeWatchStatus(card, id, status) {
         console.log(err);
     }
 }
-
 async function removeFromWatchlist(card, id) {
     try {
         const response = await fetch('/api/watchlist/' + id, {

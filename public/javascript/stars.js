@@ -1,24 +1,5 @@
 var flag = false;
 
-// async function getStars() {
-
-//   try {
-//     const response = await fetch("/api/votes", {
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
-//     if (response.ok) {
-//       document.location.reload();
-//     } else {
-//       updateAlertBox();
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
-
 async function starRating(event) {
   event.preventDefault();
   var id = $(this).attr("id");
@@ -60,6 +41,7 @@ async function saveRating(event) {
           "Content-Type": "application/json",
         },
       });
+      console.log(response);
       if (response.ok) {
         document.location.reload();
       } else {

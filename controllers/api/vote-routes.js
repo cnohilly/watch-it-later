@@ -15,7 +15,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-
 router.post("/", withAuth, async (req, res) => {
   try {
     const dbVoteData = await Vote.create({

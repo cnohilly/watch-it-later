@@ -70,11 +70,12 @@ async function createContentPage(req, res, type, id) {
       }),
       Vote.findOne({
         where: {
-          user_id: req.session.user_id,
+          user_id: (req.session.loggedIn) ? req.session.user_id : 0,
           content_type: type,
           content_id: req.params.id
         }
-      }),
+      })
+      ,
       Comment.findAll({
         where: {
           content_type: type,

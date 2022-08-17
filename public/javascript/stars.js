@@ -29,12 +29,15 @@ async function saveRating(event) {
 
     const loc = window.location.toString().split("/");
     const content_id = loc[loc.length - 1];
+    const content_type = loc[loc.length - 2];
+    console.log(content_id, content_type);
 
     try {
       const response = await fetch("/api/votes", {
         method: "POST",
         body: JSON.stringify({
           content_id,
+          content_type,
           rating
         }),
         headers: {

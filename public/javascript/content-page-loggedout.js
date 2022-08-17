@@ -2,4 +2,4 @@ function goToLogin() {
     document.location.replace('/login');
 }
 
-$('.content-buttons').on('click', 'button', goToLogin);
+$('.content-buttons, .star-container').on('click', 'button,.fa-star', goToLogin);

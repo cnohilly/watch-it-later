@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User, Comment, Vote } = require('../../models');
+const { User, Comment, Vote } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
@@ -13,6 +13,24 @@ router.get('/', (req, res) => {
         res.status(500).json(err);
     });
 });
+
+
+router.post("/", (req, res) => {
+  Vote.create({
+    user_id: req.session.user_id,
+    content_id: req.body.content_id,
+    rating: req.body.rating,
+  })
+    .then((dbUserData) => {
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
 
 router.put('/upvote', withAuth, (req, res) => {
     // make sure the session exists first

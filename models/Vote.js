@@ -18,14 +18,14 @@ Vote.init(
         key: 'id'
       }
     },
-    content_type: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     content_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    }
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,

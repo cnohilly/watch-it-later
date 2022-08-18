@@ -11,53 +11,43 @@
     </div>
 </section>
 <!--End of Hero Section-->
+
 {{!-- Content Sections --}}
-<section class="mt-6" id="popular-movies-section">
-    <h3 class="title has-text-centered is-size-4 pop-movies">Popular Movies</h3>
-    <div class="content-row pb-6 pl-4">
-        <div class="container mx-0">
-            <div class="columns mt-5 is-8 is-variable card-container" id="popular-movies-container">
-                {{#each popMovies as |content-info|}}
-                {{> content-card content-info}}
-                {{/each}}
-            </div>
+<section id="home-content-sections" class="cm-section-padding custom-bg-color has-text-white">
+    <section id="popular-movies-section" class="section custom-section py-4">
+        <h3 class="pop-movies is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Popular Movies</h3>
+        <div id="popular-movies-container" class="list-container list-hompage">
+            {{#each popMovies as |content-info|}}
+            {{> content-card content-info}}
+            {{/each}}
         </div>
-    </div>
-</section>
-<section class="mt-6" id="top-movies-section">
-    <h3 class="title has-text-centered is-size-4 top-movies">Top Rated Movies</h3>
-    <div class="content-row pb-6 pl-4">
-        <div class="container mx-0">
-            <div class="columns mt-5 is-8 is-variable card-container" id="top-movies-container">
-                {{#each topMovies as |content-info|}}
-                {{> content-card content-info}}
-                {{/each}}
-            </div>
+    </section>
+
+    <section id="top-movies-section" class="section custom-section py-4">
+        <h3 class="top-movies is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Top Rated Movies</h3>
+        <div id="top-movies-container" class="list-container list-hompage">
+            {{#each topMovies as |content-info|}}
+            {{> content-card content-info}}
+            {{/each}}
         </div>
-    </div>
-</section>
-<section class="mt-6" id="popular-tv-section">
-    <h3 class="title has-text-centered is-size-4 pop-tv">Popular TV</h3>
-    <div class="content-row pb-6 pl-4">
-        <div class="container mx-0">
-            <div class="columns mt-5 is-8 is-variable card-container" id="popular-tv-container">
-                {{#each popTV as |content-info|}}
-                {{> content-card content-info}}
-                {{/each}}
-            </div>
+    </section>
+
+    <section id="popular-tv-section" class="section custom-section py-4">
+        <h3 class="pop-tv is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Popular TV Shows</h3>
+        <div id="popular-tv-container" class="list-container list-hompage">
+            {{#each popTV as |content-info|}}
+            {{> content-card content-info}}
+            {{/each}}
         </div>
-    </div>
-</section>
-<section class="mt-6" id="top-tv-section">
-    <h3 class="title has-text-centered is-size-4 top-tv">Top Rated TV</h3>
-    <div class="content-row pb-6 pl-4">
-        <div class="container mx-0">
-            <div class="columns mt-5 is-8 is-variable card-container" id="top-tv-container">
-                {{#each topTV as |content-info|}}
-                {{> content-card content-info}}
-                {{/each}}
-            </div>
+    </section>
+
+    <section id="top-tv-section" class="section custom-section py-4">
+        <h3 class="top-tv is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Top Rated TV Shows</h3>
+        <div id="top-tv-container" class="list-container list-hompage">
+            {{#each topTV as |content-info|}}
+            {{> content-card content-info}}
+            {{/each}}
         </div>
-    </div>
+    </section>
 </section>
 {{!-- End of Content Sections --}}

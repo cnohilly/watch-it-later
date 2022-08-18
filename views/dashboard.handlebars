@@ -1,16 +1,77 @@
-{{#if comment.length}}
+{{!-- empty space --}}
 <section>
-  <h2>Your Comments</h2>
-  <ol>
-    {{#each comment as |comment|}}
-    <li>
-      {{> comment-info comment}}
-      <a href="/dashboard/edit/{{comment.id}}" class="edit-link">Edit Comment</a>
-    </li>
-    {{/each}}
-  </ol>
+    </br>
 </section>
-{{/if}}
+{{!-- Change user profile functionality --}}
+<section id="profile-section" class="columns is-centered">
+    <div class="column is-three-fifths custom-bg-color has-text-white" id="profile-container">
 
-{{!-- link javascript files here --}}
-<script src=""></script>
+        <h2>Profile</h2>
+
+        <article class="media">
+            <figure class="media-left my-auto">
+                {{!-- container for user profile image --}}
+                <p class="image">
+                    <img class="is-rounded dashboard-pfp-picture" src="{{pfp_path}}">
+                </p>
+            </figure>
+
+
+            <div class="container">
+                <form class="update-user-form" autocomplete="off">
+                    <div class="field">
+                        <label for="username" class="label has-text-light">New Username</label>
+                        <div class="control">
+                            <input type="text" placeholder="New username" id="username" class="input">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="field">
+                        <label for="current-password" class="label has-text-light">Current Password</label>
+                        <div class="control">
+                            <input type="password" placeholder="Current Password" id="current-password" class="input">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="new-password" class="label has-text-light">New Password</label>
+                        <div class="control">
+                            <input type="password" placeholder="New Password" id="new-password" class="input">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="field">
+                        <label for="email" class="label has-text-light">New Email</label>
+                        <div class="control">
+                            <input type="email" placeholder="New Email" id="email" class="input">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="field">
+                        <label for="pfp_path" class="label has-text-light">New Profile Picture (link)</label>
+                        <div class="control">
+                            <input type="url" placeholder="New Profile Picture" id="pfp_path" class="input">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <button type="submit" class="button is-link">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </article>
+    </div>
+</section>
+
+{{!-- All user comments --}}
+<section id="comment-section" class="custom-bg-color has-text-white">
+    <p class="has-text-weight-semibold">Your Comments</p>
+
+
+    {{#each comments as |comment|}}
+    {{!-- container for each comment --}}
+    {{> dashcomments comment}}
+    {{/each}}
+
+</section>
+<script src="/javascript/update-user.js"></script>

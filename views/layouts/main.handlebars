@@ -14,6 +14,7 @@
     integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
   <title>Watch It Later</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -43,17 +44,17 @@
       </div>
 
       <!-- search field -->
-      <div class="navbar-item navbar-search field has-addons mb-0 search-hide">
+      <form class="navbar-item navbar-search field has-addons mb-0 search-hide search-form">
         <div class="control">
           <span id="menu-search-filter" class="select is-rounded">
-            <select>
-              <option>Movies</option>
-              <option>TV Shows</option>
+            <select class="search-filter-dropdown">
+              <option value="movie">Movies</option>
+              <option value="tv">TV Shows</option>
             </select>
           </span>
         </div>
         <div class="control is-expanded">
-          <input class="input" type="text" placeholder="Search for a Movie or TV show">
+          <input class="input" type="text" placeholder="Search for a Movie or TV show" id="search-input" />
         </div>
         <div class="control">
           <button class="button is-info is-rounded" type="submit" id="search">
@@ -62,34 +63,34 @@
             </span>
           </button>
         </div>
-      </div>
+      </form>
 
       <!-- navbar menu -->
       <div class="navbar-menu">
         <div class="navbar-start">
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
-              Popular
+              Movies
             </a>
             <div class="navbar-dropdown">
               <a class="navbar-item has-text-centered" id="nav-pop-mov" href="/#popular-movies-section">
-                Movies
+                Popular
               </a>
-              <a class="navbar-item has-text-centered" id="nav-pop-tv" href="/#popular-tv-section">
-                TV Shows
+              <a class="navbar-item has-text-centered" id="nav-pop-tv" href="/#top-movies-section">
+                Top Rated
               </a>
             </div>
           </div>
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
-              Top Rated
+              TV Shows
             </a>
             <div class="navbar-dropdown">
-              <a class="navbar-item has-text-centered" id="nav-watchlist" href="/#top-movies-section">
-                Movies
+              <a class="navbar-item has-text-centered" id="nav-watchlist" href="/#popular-tv-section">
+                Popular
               </a>
               <a class="navbar-item has-text-centered" id="nav-watchlist" href="/#top-tv-section">
-                TV Shows
+                Top Rated
               </a>
             </div>
           </div>
@@ -101,6 +102,13 @@
           <div class="navbar-item">
             <div class="buttons">
               {{#if loggedIn}}
+              <a class="button is-info is-outlined" id="nav-dashboard" href="/dashboard">
+                <span class="icon is-small">
+                  <i class="fa-solid fa-bars"></i>
+                </span>
+                <span>Dashboard</span>
+              </a>
+
               <button class="button is-danger is-outlined" id="nav-logout">
                 <span class="icon is-small">
                   <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -134,8 +142,8 @@
   <!-- main -->
   <main>
     <div class="container mt-1 alert-box is-fluid is-hidden">
-      <div class="notification">
-        <button class="delete"></button>
+      <div class="notification has-text-centered">
+        <button class="delete" id="dismiss-notification-btn"></button>
         <span class="alert-text">Test alert for the user.</span>
       </div>
     </div>
@@ -147,18 +155,72 @@
 
   <!-- footer -->
   <footer class="footer">
-    <div class="has-text-centered has-text-weight-semibold">
-      <p>Made by Kyle Tang, Stephon Treadwell, Chris Nohilly, Braulio Loaiza, and Ian Zyvith</p>
-      <p class="pt-3">&copy; 2022 Watch It Later, Inc.</p>
-    </div>
+      <div class="columns px-5">
+          <div class="column">
+              <h3 class="has-text-weight-semibold is-size-5 pb-3">About Us</h3>
+              <p>Made by Kyle Tang, Stephon Treadwell, Chris Nohilly, Braulio Loaiza, and Ian Zyvith</p>
+          </div>
+          <div class="column">
+              <h3 class="has-text-weight-semibold is-size-5 pb-3">Contact Us</h3>
+              <p class="pb-3">
+                  <i class="fa-solid fa-phone"></i>
+                  555-555-5555
+              </p>
+              <a href="malito:watchitlater@gmail.com" class="has-text-white">
+                  <i class="fa-solid fa-envelope"></i>
+                  watchitlater@gmail.com
+              </a>
+          </div>
+          <div class="column">
+              <h3 class="has-text-weight-semibold is-size-5 pb-3">Follow Us</h3>
+              <div class="buttons are-medium">
+                  <button class="button is-white is-inverted">
+                      <span class="icon">
+                          <a href="https://github.com/cnohilly/watch-it-later" class="has-text-white">
+                              <i class="fa-brands fa-github fa-2x"></i>
+                          </a>
+                      </span>
+                  </button>
+                  <button class="button is-white is-inverted">
+                      <span class="icon">
+                          <i class="fa-brands fa-facebook fa-2x"></i>
+                        </span>
+                  </button>
+                  <button class="button is-white is-inverted">
+                      <span class="icon">
+                          <i class="fa-brands fa-twitter fa-2x"></i>
+                      </span>
+                  </button>
+                  <button class="button is-white is-inverted">
+                      <span class="icon">
+                          <i class="fa-brands fa-snapchat fa-2x"></i>
+                        </span>
+                  </button>
+                  <button class="button is-white is-inverted">
+                      <span class="icon">
+                          <i class="fa-brands fa-instagram fa-2x"></i>
+                        </span>
+                  </button>
+              </div>
+          </div>
+          <div class="column">
+              <h3 class="has-text-weight-semibold is-size-5 pb-3">Special Thanks To</h3>
+              <a href="https://www.themoviedb.org/" class="has-text-weight-semibold is-size-4 has-text-info">
+                TMDB
+              </a>
+          </div>
+      </div>
+      <div class="has-text-centered has-text-weight-semibold">
+          <p class="pt-3">&copy; 2022 Watch It Later, Inc.</p>
+      </div>
   </footer>
 
   <!-- script -->
   <script src="/javascript/menu.js"></script>
+  <script src="/javascript/search.js"></script>
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
   <script src="/javascript/alert-box.js"></script>
 </body>
-
 </html>

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Comment, Vote } = require('../../models');
+const withAuth = require('../../utils/auth')
 
 // get all users
 router.get('/', (req, res) => {
@@ -15,7 +16,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   User.findOne({
-    where:{
+    where: {
       id: req.body.id
     },
     attributes: { exclude: ['password'] }
@@ -28,7 +29,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  
+
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -39,7 +40,7 @@ router.post("/", (req, res) => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
         req.session.loggedIn = true;
-    
+
         res.json(dbUserData);
       });
     })
@@ -50,7 +51,7 @@ router.post("/", (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  
+
   User.findOne({
     where: {
       username: req.body.username
@@ -76,10 +77,8 @@ router.post('/login', (req, res) => {
       res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
 
-    
-  });
 
-  
+  });
 });
 
 router.post('/logout', (req, res) => {
@@ -93,6 +92,41 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// route to update current user requiring their current password
+router.put('/', withAuth, async (req, res) => {
+  try {
+    // gets the currently logged in user
+    let dbUserData = await User.findOne({
+      where: {
+        id: req.session.user_id
+      }
+    });
+    // if the current password given is correct
+    if (!dbUserData.checkPassword(req.body.current_password)) {
+      res.status(400).json({ message: 'Incorrect password!' });
+      return;
+    }
+    // deletes the current_password from the body
+    delete req.body.current_password;
+    // will only set hooks to true if a new password is being set
+    let hooks = req.body.password ? true : false;
+    // updates the current user
+    dbUserData = await User.update({ ...req.body }, {
+      individualHooks: hooks,
+      where: {
+        id: req.session.user_id
+      }
+    });
+    // updates the username if it needs to be
+    req.session.save(() => {
+      req.session.username = (req.body.username) ? req.session.username : req.body.username;
+    });
+    res.json(dbUserData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 router.delete('/:id', (req, res) => {
   User.destroy({

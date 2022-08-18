@@ -3,6 +3,12 @@ const { Comment } = require('../models');
 const commentdata = [
     {
         comment_text: 'Nunc rhoncus dui vel sem.',
+        user_id: 1,
+        content_id: 616037,
+        content_type: 'movie'
+    },
+    {
+        comment_text: 'Nunc rhoncus dui vel sem.',
         user_id: 6,
         content_id: 616037,
         content_type: 'movie'

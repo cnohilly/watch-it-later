@@ -13,6 +13,7 @@ const {
 } = require("../utils/tmdb-api");
 const { User, Comment, Vote, Watchlist } = require("../models");
 
+// homepage for the website
 router.get("/", async (req, res) => {
   try {
     // makes several queries to the third party api for content
@@ -95,6 +96,7 @@ async function createContentPage(req, res, type, id) {
     // Gets the avg_rating from the query or defaults to 0, parses the float and sets precision to round to first decimal place
     let avg_rating = votes[0].avg_rating ? votes[0].avg_rating : 0;
     avg_rating = parseFloat(avg_rating).toPrecision(2);
+    // if the user has rated the content before, get their current score
     let user_rating;
     if (dataQuery[2]) {
       const rating = dataQuery[2].get({ plain: true });
@@ -120,6 +122,7 @@ async function createContentPage(req, res, type, id) {
   }
 }
 
+// route to the watchlist that will redirect to the user's specific id or to the login page if they are not logged in
 router.get("/watchlist", async (req, res) => {
   // if the user is not logged in, the will be directed to login page, otherwise directed to their specific id's page
   if (!req.session.loggedIn) {

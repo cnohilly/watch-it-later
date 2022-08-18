@@ -107,6 +107,12 @@ main {
     background: #555;
 }
 
+/* Styling for profile pictures */
+.pfp-picture {
+    height: 48px !important;
+    width: 48px !important;
+}
+
 /* Content Sections Styling */
 .content-row {
     margin-left: 1rem;
@@ -315,6 +321,11 @@ main {
 
 #profile-container {
     border-radius: 1rem;
+}
+
+.dashboard-pfp-picture {
+    height: 128px !important;
+    width: 128px !important;
 }
 
 /* Dashboard End */

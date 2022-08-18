@@ -3,6 +3,7 @@ var tmdbImgPath = 'https://image.tmdb.org/t/p/w500';
 
 function getContentData(type, id) {
     var apiUrl = 'https://api.themoviedb.org/3/' + type + '/' + id + '?api_key=' + process.env.TMDB_KEY + '&language=en-US';
+    console.log(apiUrl);
     return axios(apiUrl);
 }
 

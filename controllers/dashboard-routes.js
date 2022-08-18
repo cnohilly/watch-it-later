@@ -5,33 +5,35 @@ const withAuth = require('../utils/auth');
 
 // get all comments for dashboard
 router.get('/', withAuth, (req, res) => {
-    Comment.findAll({
-      where: {
-        user_id: req.session.user_id
-      },
-      attributes: [
-        'id',
-        'comment_text',
-        'user_id',
-        'content_id',
-        'content_type',
-        'createdAt'
-      ],
-      include: [
-        {
-            model: User,
-            attributes: ['username']
-        }
-      ]
+  Comment.findAll({
+    where: {
+      user_id: req.session.user_id
+    },
+    attributes: [
+      'id',
+      'comment_text',
+      'user_id',
+      'content_id',
+      'content_type',
+      'createdAt'
+    ],
+    include: [
+      {
+        model: User,
+        attributes: { exclude: ['password'] }
+      }
+    ]
+  })
+    .then(dbCommentData => {
+      const comments = dbCommentData.map(comment => comment.get({ plain: true }));
+      // sets to a string if the user has no comments
+      const pfp_path = (comments[0]) ? comments[0].user.pfp_path : 'no-image';
+      res.render('dashboard', { comments, pfp_path, loggedIn: true });
     })
-      .then(dbCommentData => {
-        const comments = dbCommentData.map(comment => comment.get({ plain: true }));
-        res.render('dashboard', { comments, loggedIn: true });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
+});
 
 module.exports = router;

@@ -1,3 +1,5 @@
+// seeds to create dummy data for the database for testing
+
 const sequelize = require('../config/connection');
 const { Watchlist } = require('../models');
 

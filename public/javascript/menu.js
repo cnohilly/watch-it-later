@@ -16,6 +16,7 @@ $(document).ready(function () {
     });
 });
 
+// if an image has an error loading, it will attempt to replace it with a placeholder image
 $('img').on('error', function (event) {
     console.log('triggered');
     $(this).attr('src',

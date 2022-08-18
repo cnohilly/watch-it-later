@@ -93,6 +93,7 @@ Search, Rating, Comment and Watchlist Functionalities:
 
 ## Technologies Used
 
+- TMDB API
 - Node.js and Express.js
 - Handlebars.js
 - MySQL

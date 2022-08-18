@@ -34,7 +34,8 @@ router.post("/", withAuth, async (req, res) => {
 });
 
 // route to update an existing vote entry, updating only the rating
-// using the session user_id and the passed in id and type
+// expects rating: string to use as the column to update, 
+// with id: int and type: string to specify which entry to update with the user_id of session
 router.put("/", withAuth, async (req, res) => {
   try {
     const dbVoteData = await Vote.update(

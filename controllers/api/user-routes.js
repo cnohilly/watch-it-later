@@ -119,11 +119,9 @@ router.put('/', withAuth, async (req, res) => {
       }
     });
     // updates the username if it needs to be
-    req.session.save(() => {
-      req.session.username = (req.body.username) ? req.body.username : req.session.username;
-      req.session.pfp_path = (req.body.pfp_path) ? req.body.pfp_path : req.session.pfp_path;
-    });
-    console.log(dbUserData);
+    req.session.username = (req.body.username) ? req.body.username : req.session.username;
+    req.session.pfp_path = (req.body.pfp_path) ? req.body.pfp_path : req.session.pfp_path;
+    console.log(req.session);
     res.json(dbUserData);
   } catch (err) {
     console.log(err);

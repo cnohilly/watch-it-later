@@ -1,15 +1,10 @@
-
-<section id="home-content-sections" class="cm-section-padding has-background-light cm-bg-height">
-    <section id="popular-movies-section" class="section custom-section py-4">
-        <h3 class="pop-movies is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Popular Movies</h3>
-        <div id="popular-movies-container" class="list-container list-hompage">
+<section id="search-results-section" class="cm-section-padding custom-bg-color has-text-white cm-bg-height">
+    <section class="section custom-section py-4">
+        <h3 class="is-size-3 is-size-4-touch mb-3 has-text-weight-bold">Search Results</h3>
+        <div id="search-result-container" class="list-container list-hompage">
             {{#each searchContent as |content-info|}}
             {{> content-card content-info}}
             {{/each}}
         </div>
     </section>
 </section>
-
-
-
-

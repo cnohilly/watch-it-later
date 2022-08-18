@@ -107,24 +107,6 @@ main {
     background: #555;
 }
 
-/* Content Sections Styling */
-.content-row {
-    margin-left: 1rem;
-    margin-right: 0.5rem;
-    width: auto;
-    overflow-x: scroll;
-    padding-top: 0;
-}
-
-.card-hover {
-    transition: 250ms all;
-    cursor: pointer;
-}
-
-.card-hover:hover {
-    transform: scale(1.1);
-}
-
 /* content-page START*/
 .hero-body h2,
 .hero-body p,
@@ -137,7 +119,7 @@ main {
 }
 
 .cm-bg-height {
-    min-height: calc(100vh - 204px - 56px);
+    min-height: calc(100vh - 306px - 56px);
 }
 
 .content-hero {
@@ -296,6 +278,11 @@ main {
 /* watchlist END*/
 
 /* Homepage START*/
+.custom-section h3 {
+    text-shadow: 3px 1px 7px black;
+    border-bottom: 2px solid var(--primary-color);
+}
+
 .cm-section-padding {
     padding: 1rem 8rem 4rem 8rem;
 }
@@ -308,7 +295,6 @@ main {
 .list-hompage .card img {
     height: 17vw;
 }
-
 /* Homepage End */
 
 /* Dashboard Styling */
@@ -393,7 +379,7 @@ main {
     }
 
     .cm-bg-height {
-        min-height: calc(100vh - 204px - 52px);
+        min-height: calc(100vh - 306px - 52px);
     }
 
     .dropdown-menu {
@@ -479,7 +465,7 @@ main {
     }
 
     .content-buttons .dropdown {
-        width: 210px;
+        width: 250px;
     }
 
     .cm-margin {

@@ -6,7 +6,7 @@
         </div>
         <div class="card-content card-info">
             <p class="content-title has-text-weight-semibold">{{content_title}}</p>
-            <p class="title is-size-6 content-date has-text-grey">{{release}}</p>
+            <p class="title is-size-6 content-date has-text-grey">{{release_year}}</p>
         </div>
         {{#if isCurrentUser}}
         <footer class="card-footer">
@@ -22,8 +22,8 @@
                         <div class="dropdown-content">
                             <div class="dropdown-item">
                                 <button class="button is-white is-fullwidth watch-dropdown-btn"
-                                    data-watch-status="0">Plan
-                                    to Watch</button>
+                                    data-watch-status="0">
+                                    Plan to Watch</button>
                             </div>
                             <div class="dropdown-item">
                                 <button class="button is-white is-fullwidth watch-dropdown-btn"

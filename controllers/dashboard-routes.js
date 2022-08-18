@@ -27,7 +27,7 @@ router.get('/', withAuth, (req, res) => {
     .then(dbCommentData => {
       const comments = dbCommentData.map(comment => comment.get({ plain: true }));
       // sets to a string if the user has no comments
-      const pfp_path = (comments[0]) ? comments[0].user.pfp_path : 'no-image';
+      const pfp_path = req.session.pfp_path;
       res.render('dashboard', { comments, pfp_path, loggedIn: true });
     })
     .catch(err => {

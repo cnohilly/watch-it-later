@@ -74,6 +74,7 @@ router.post('/login', (req, res) => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
+      req.session.pfp_path = dbUserData.pfp_path;
       res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
 
@@ -119,8 +120,10 @@ router.put('/', withAuth, async (req, res) => {
     });
     // updates the username if it needs to be
     req.session.save(() => {
-      req.session.username = (req.body.username) ? req.session.username : req.body.username;
+      req.session.username = (req.body.username) ? req.body.username : req.session.username;
+      req.session.pfp_path = (req.body.pfp_path) ? req.body.pfp_path : req.session.pfp_path;
     });
+    console.log(dbUserData);
     res.json(dbUserData);
   } catch (err) {
     console.log(err);

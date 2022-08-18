@@ -111,6 +111,7 @@ async function createContentPage(req, res, type, id) {
       comments,
       avg_rating,
       user_rating,
+      user_pfp: req.session.pfp_path,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {

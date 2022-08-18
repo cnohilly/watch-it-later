@@ -107,6 +107,12 @@ main {
     background: #555;
 }
 
+/* Styling for profile pictures */
+.pfp-picture {
+    height: 48px !important;
+    width: 48px !important;
+}
+
 /* content-page START*/
 .hero-body h2,
 .hero-body p,
@@ -295,12 +301,18 @@ main {
 .list-hompage .card img {
     height: 17vw;
 }
+
 /* Homepage End */
 
 /* Dashboard Styling */
 
 #profile-container {
     border-radius: 1rem;
+}
+
+.dashboard-pfp-picture {
+    height: 128px !important;
+    width: 128px !important;
 }
 
 /* Dashboard End */

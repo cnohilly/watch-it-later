@@ -45,11 +45,11 @@ router.get("/", async (req, res) => {
 });
 
 // creates the content pages for movies and tv series
-router.get("/movie/:id", async (req, res) => {
+router.get("/movie/:id", (req, res) => {
   createContentPage(req, res, 'movie', req.params.id);
 });
 
-router.get("/tv/:id", async (req, res) => {
+router.get("/tv/:id", (req, res) => {
   createContentPage(req, res, 'tv', req.params.id);
 });
 
@@ -74,8 +74,7 @@ async function createContentPage(req, res, type, id) {
           content_type: type,
           content_id: req.params.id
         }
-      })
-      ,
+      }),
       Comment.findAll({
         where: {
           content_type: type,
@@ -84,7 +83,7 @@ async function createContentPage(req, res, type, id) {
         include: [
           {
             model: User,
-            attributes: ["username"],
+            attributes: { exclude: ['password'] },
           },
         ],
       })

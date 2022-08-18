@@ -2,7 +2,6 @@
 <section>
     </br>
 </section>
-
 {{!-- Change user profile functionality --}}
 <section id="profile-section" class="columns is-centered">
     <div class="column is-three-fifths custom-bg-color has-text-white" id="profile-container">
@@ -11,9 +10,9 @@
 
         <article class="media">
             <figure class="media-left my-auto">
+                {{!-- container for user profile image --}}
                 <p class="image">
-                    {{!-- container for user profile image --}}
-                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                    <img class="is-rounded dashboard-pfp-picture" src="{{pfp_path}}">
                 </p>
             </figure>
 
@@ -44,6 +43,13 @@
                         <label for="email" class="label has-text-light">New Email</label>
                         <div class="control">
                             <input type="email" placeholder="New Email" id="email" class="input">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="field">
+                        <label for="pfp_path" class="label has-text-light">New Profile Picture (link)</label>
+                        <div class="control">
+                            <input type="url" placeholder="New Profile Picture" id="pfp_path" class="input">
                         </div>
                     </div>
                     <div class="field">

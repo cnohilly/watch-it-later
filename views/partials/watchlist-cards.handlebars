@@ -1,9 +1,11 @@
 {{!-- card container for watchlist --}}
 <div class="content-card animate__animated animate__faster animate__fadeIn" data-watchlist-id="{{id}}">
     <div class="card">
-        <div class="card-image has-text-centered card-info">
-            <img class="card-poster" src="{{poster_path}}">
-        </div>
+        <a href="/{{content_type}}/{{content_id}}">
+            <div class="card-image has-text-centered card-info">
+                <img class="card-poster" src="{{poster_path}}">
+            </div>
+        </a>
         <div class="card-content card-info">
             <p class="content-title has-text-weight-semibold">{{content_title}}</p>
             <p class="title is-size-6 content-date has-text-grey">{{release_year}}</p>

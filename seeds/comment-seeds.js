@@ -1,3 +1,5 @@
+// seeds to create dummy data for the database for testing
+
 const { Comment } = require('../models');
 
 const commentdata = [

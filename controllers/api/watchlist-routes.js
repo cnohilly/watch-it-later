@@ -3,6 +3,7 @@ const sequelize = require('../../config/connection');
 const { Watchlist } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// route to get all of the entries in the watchlist table
 router.get('/', async (req, res) => {
     try {
         const dbWatchData = await Watchlist.findAll();
@@ -13,6 +14,9 @@ router.get('/', async (req, res) => {
     }
 });
 
+// route to post a new entry into the watchlist table
+// expects type: string, id: int, title: string, poster path: string, release year: string, status: int
+// and will get the user_id from the session
 router.post('/', withAuth, async (req, res) => {
     try {
         const dbWatchData = await Watchlist.create({
@@ -31,6 +35,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
+// route to update the specific watchilst id, meant for updating the status of an entry
 router.put('/:id', withAuth, async (req, res) => {
     try {
         const dbWatchData = await Watchlist.update(req.body, {
@@ -46,6 +51,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
+// route to delete an entry in the table by the specific id
 router.delete('/:id', async (req, res) => {
     try {
         const dbWatchData = await Watchlist.destroy({
@@ -53,6 +59,7 @@ router.delete('/:id', async (req, res) => {
                 id: req.params.id
             }
         });
+        // if the id is not found
         if (!dbWatchData) {
             res.status(404).json({ message: 'No watchlist entry with this id.' });
             return;

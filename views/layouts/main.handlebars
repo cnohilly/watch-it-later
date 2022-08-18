@@ -155,19 +155,72 @@
 
   <!-- footer -->
   <footer class="footer">
-    <div class="has-text-centered has-text-weight-semibold">
-      <p>Made by Kyle Tang, Stephon Treadwell, Chris Nohilly, Braulio Loaiza, and Ian Zyvith</p>
-      <p class="pt-3">&copy; 2022 Watch It Later, Inc.</p>
-    </div>
+      <div class="columns px-5">
+          <div class="column">
+              <h3 class="has-text-weight-semibold is-size-5 pb-3">About Us</h3>
+              <p>Made by Kyle Tang, Stephon Treadwell, Chris Nohilly, Braulio Loaiza, and Ian Zyvith</p>
+          </div>
+          <div class="column">
+              <h3 class="has-text-weight-semibold is-size-5 pb-3">Contact Us</h3>
+              <p class="pb-3">
+                  <i class="fa-solid fa-phone"></i>
+                  555-555-5555
+              </p>
+              <a href="malito:watchitlater@gmail.com" class="has-text-white">
+                  <i class="fa-solid fa-envelope"></i>
+                  watchitlater@gmail.com
+              </a>
+          </div>
+          <div class="column">
+              <h3 class="has-text-weight-semibold is-size-5 pb-3">Follow Us</h3>
+              <div class="buttons are-medium">
+                  <button class="button is-white is-inverted">
+                      <span class="icon">
+                          <a href="https://github.com/cnohilly/watch-it-later" class="has-text-white">
+                              <i class="fa-brands fa-github fa-2x"></i>
+                          </a>
+                      </span>
+                  </button>
+                  <button class="button is-white is-inverted">
+                      <span class="icon">
+                          <i class="fa-brands fa-facebook fa-2x"></i>
+                        </span>
+                  </button>
+                  <button class="button is-white is-inverted">
+                      <span class="icon">
+                          <i class="fa-brands fa-twitter fa-2x"></i>
+                      </span>
+                  </button>
+                  <button class="button is-white is-inverted">
+                      <span class="icon">
+                          <i class="fa-brands fa-snapchat fa-2x"></i>
+                        </span>
+                  </button>
+                  <button class="button is-white is-inverted">
+                      <span class="icon">
+                          <i class="fa-brands fa-instagram fa-2x"></i>
+                        </span>
+                  </button>
+              </div>
+          </div>
+          <div class="column">
+              <h3 class="has-text-weight-semibold is-size-5 pb-3">Special Thanks To</h3>
+              <a href="https://www.themoviedb.org/" class="has-text-weight-semibold is-size-4 has-text-info">
+                TMDB
+              </a>
+          </div>
+      </div>
+      <div class="has-text-centered has-text-weight-semibold">
+          <p class="pt-3">&copy; 2022 Watch It Later, Inc.</p>
+      </div>
   </footer>
 
   <!-- script -->
   <script src="/javascript/menu.js"></script>
+  <script src="/javascript/search.js"></script>
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
   <script src="/javascript/alert-box.js"></script>
 </body>
-<script src="/javascript/search.js"></script>
-
 </html>

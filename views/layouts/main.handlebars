@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image" href="/images/watch-it-later-icon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +27,8 @@
     <nav class="navbar is-fixed-top is-black" role="navigation" aria-label="main navigation">
       <div class="navbar-brand px-3">
         <a class="navbar-item" href="/">
-          <h1 class="has-text-weight-bold is-size-4" id="nav-logo">
+          <img class="cm-brand-nav pr-2" src="/images/watch-it-later-logo.svg" alt="Logo for Watch It Later">
+          <h1 class="has-text-weight-bold is-size-4 is-size-5-touch" id="nav-logo">
             Watch It Later
           </h1>
         </a>
@@ -108,7 +110,6 @@
                 </span>
                 <span>Dashboard</span>
               </a>
-
               <button class="button is-danger is-outlined" id="nav-logout">
                 <span class="icon is-small">
                   <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -133,9 +134,6 @@
           </div>
         </div>
       </div>
-      </div>
-      </div>
-      </div>
     </nav>
   </header>
 
@@ -154,65 +152,81 @@
   </main>
 
   <!-- footer -->
-  <footer class="footer">
-      <div class="columns px-5">
-          <div class="column">
-              <h3 class="has-text-weight-semibold is-size-5 pb-3">About Us</h3>
+  <footer class="footer pb-5">
+    <div class="columns px-5">
+        <div class="column">
+          <h3 class="has-text-weight-semibold is-size-5 pb-3">About Us</h3>
+          <div class="columns">
+            <div class="column is-one-fifth">
+              <img class="cm-brand-footer" src="/images/watch-it-later-logo.svg" alt="Logo for Watch It Later">
+            </div>
+            <div class="column">
               <p>Made by Kyle Tang, Stephon Treadwell, Chris Nohilly, Braulio Loaiza, and Ian Zyvith</p>
+            </div>
           </div>
-          <div class="column">
-              <h3 class="has-text-weight-semibold is-size-5 pb-3">Contact Us</h3>
-              <p class="pb-3">
-                  <i class="fa-solid fa-phone"></i>
-                  555-555-5555
-              </p>
-              <a href="malito:watchitlater@gmail.com" class="has-text-white">
-                  <i class="fa-solid fa-envelope"></i>
-                  watchitlater@gmail.com
-              </a>
+        </div>
+        <div class="column">
+          <h3 class="has-text-weight-semibold is-size-5 pb-3">Contact Us</h3>
+          <p class="pb-3">
+            <i class="fa-solid fa-phone"></i>
+            555-555-5555
+          </p>
+          <a href="malito:watchitlater@gmail.com" class="has-text-white">
+            <i class="fa-solid fa-envelope"></i>
+            watchitlater@gmail.com
+          </a>
+        </div>
+        <div class="column">
+          <h3 class="has-text-weight-semibold is-size-5 pb-3">Follow Us</h3>
+          <div class="buttons are-medium">
+            <button class="button is-white is-inverted">
+              <span class="icon">
+                <a href="https://github.com/cnohilly/watch-it-later" class="has-text-white">
+                  <i class="fa-brands fa-github fa-2x"></i>
+                </a>
+              </span>
+            </button>
+            <button class="button is-white is-inverted">
+              <span class="icon">
+                <a href="https://www.facebook.com/" class="has-text-white">
+                  <i class="fa-brands fa-facebook fa-2x"></i>
+                </a>
+              </span>
+            </button>
+            <button class="button is-white is-inverted">
+              <span class="icon">
+                <a href="https://twitter.com/" class="has-text-white">
+                  <i class="fa-brands fa-twitter fa-2x"></i>
+                </a>
+              </span>
+            </button>
+            <button class="button is-white is-inverted">
+              <span class="icon">
+                <a href="https://www.snapchat.com/" class="has-text-white">
+                  <i class="fa-brands fa-snapchat fa-2x"></i>
+                </a>
+              </span>
+            </button>
+            <button class="button is-white is-inverted">
+              <span class="icon">
+                <a href="https://www.instagram.com/" class="has-text-white">
+                  <i class="fa-brands fa-instagram fa-2x"></i>
+                </a>
+              </span>
+            </button>
           </div>
-          <div class="column">
-              <h3 class="has-text-weight-semibold is-size-5 pb-3">Follow Us</h3>
-              <div class="buttons are-medium">
-                  <button class="button is-white is-inverted">
-                      <span class="icon">
-                          <a href="https://github.com/cnohilly/watch-it-later" class="has-text-white">
-                              <i class="fa-brands fa-github fa-2x"></i>
-                          </a>
-                      </span>
-                  </button>
-                  <button class="button is-white is-inverted">
-                      <span class="icon">
-                          <i class="fa-brands fa-facebook fa-2x"></i>
-                        </span>
-                  </button>
-                  <button class="button is-white is-inverted">
-                      <span class="icon">
-                          <i class="fa-brands fa-twitter fa-2x"></i>
-                      </span>
-                  </button>
-                  <button class="button is-white is-inverted">
-                      <span class="icon">
-                          <i class="fa-brands fa-snapchat fa-2x"></i>
-                        </span>
-                  </button>
-                  <button class="button is-white is-inverted">
-                      <span class="icon">
-                          <i class="fa-brands fa-instagram fa-2x"></i>
-                        </span>
-                  </button>
-              </div>
-          </div>
-          <div class="column">
-              <h3 class="has-text-weight-semibold is-size-5 pb-3">Special Thanks To</h3>
-              <a href="https://www.themoviedb.org/" class="has-text-weight-semibold is-size-4 has-text-info">
-                TMDB
-              </a>
-          </div>
-      </div>
-      <div class="has-text-centered has-text-weight-semibold">
-          <p class="pt-3">&copy; 2022 Watch It Later, Inc.</p>
-      </div>
+        </div>
+        <div class="column">
+          <h3 class="has-text-weight-semibold is-size-5 pb-3">Special Thanks To</h3>
+          <a href="https://www.themoviedb.org/">
+            <img class="cm-logo-size" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_1-8ba2ac31f354005783fab473602c34c3f4fd207150182061e425d366e4f34596.svg" alt="Logo for TMDb">
+          </a>
+          <p>This product uses the TMDB API but is not endorsed or certified by TMDB</p>
+        </div>
+    </div>
+    <div class="has-text-centered has-text-weight-semibold">
+      <p class="pt-5">&copy; 2022 Watch It Later, Inc.</p>
+    </div>
   </footer>
 
   <!-- script -->

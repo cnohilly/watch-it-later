@@ -8,8 +8,9 @@ router.use('/', homeRoutes);
 router.use('/dashboard', dashboardRoutes);
 router.use('/api', apiRoutes);
 
-// router.use((req, res) => {
-//     res.render('404-page');
-// })
+// renders a 404 page if going to a route that doesn't exist
+router.use((req, res) => {
+    res.render('404-page');
+})
 
 module.exports = router;

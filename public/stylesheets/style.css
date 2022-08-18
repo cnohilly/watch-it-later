@@ -125,7 +125,7 @@ main {
 }
 
 .cm-bg-height {
-    min-height: calc(100vh - 306px - 56px);
+    min-height: calc(100vh - 265px - 56px);
 }
 
 .content-hero {
@@ -302,6 +302,18 @@ main {
     height: 17vw;
 }
 
+.cm-logo-size{
+    max-width: 300px;
+}
+
+.cm-brand-nav{
+    width: 40px;
+    max-height: none !important;
+}
+
+.cm-brand-footer{
+    width: 100px;
+}
 /* Homepage End */
 
 /* Dashboard Styling */
@@ -391,7 +403,7 @@ main {
     }
 
     .cm-bg-height {
-        min-height: calc(100vh - 306px - 52px);
+        min-height: calc(100vh - 265px - 52px);
     }
 
     .dropdown-menu {

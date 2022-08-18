@@ -4,7 +4,7 @@ const { User, Comment, Vote } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
-// get all votes
+// route to get all of the entries in the vote table
 router.get('/', async (req, res) => {
   try {
     const dbVoteData = await Vote.findAll();
@@ -15,6 +15,9 @@ router.get('/', async (req, res) => {
   }
 });
 
+// route to create a new vote (rating) entry
+// expects id: int, type: string, rating: int
+// gets user_id from the session
 router.post("/", withAuth, async (req, res) => {
   try {
     const dbVoteData = await Vote.create({
@@ -30,6 +33,9 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
+// route to update an existing vote entry, updating only the rating
+// expects rating: string to use as the column to update, 
+// with id: int and type: string to specify which entry to update with the user_id of session
 router.put("/", withAuth, async (req, res) => {
   try {
     const dbVoteData = await Vote.update(
@@ -49,6 +55,7 @@ router.put("/", withAuth, async (req, res) => {
   }
 });
 
+// route to delete a vote entry for the specific id
 router.delete('/:id', async (req, res) => {
   try {
     const dbVoteData = await Vote.destroy({
@@ -56,7 +63,7 @@ router.delete('/:id', async (req, res) => {
         id: req.params.id
       }
     });
-
+    // if id does not exist
     if (!dbVoteData) {
       res.status(404).json({ message: 'No vote entry found with this id' });
       return;

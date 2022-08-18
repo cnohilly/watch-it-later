@@ -1,9 +1,11 @@
 async function signupFormHandler(event) {
   event.preventDefault();
 
+  // gets the username, email, and password from the signup page
   const username = document.querySelector('#username-signup').value.trim();
   const email = document.querySelector("#email-signup").value.trim();
   const password = document.querySelector('#password-signup').value.trim();
+  // if a username and password were supplied then the api to create the new user will be called
   if (username && password) {
     const response = await fetch('/api/users/', {
       method: 'post',
@@ -15,7 +17,7 @@ async function signupFormHandler(event) {
       headers: { 'Content-Type': 'application/json' }
     });
 
-    // check the response status
+    // if the api call is successful, go to the homepage, otherwise alert the user
     if (response.ok) {
       document.location.replace('/');
     } else {

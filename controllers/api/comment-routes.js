@@ -4,76 +4,78 @@ const withAuth = require('../../utils/auth');
 
 // The `/api/comment` endpoint
 
-// get all comments
-router.get('/', (req, res) => {
-  Comment.findAll()
-    .then(dbCommentData => res.json(dbCommentData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+// route to get all of the entries in the comment table
+router.get('/', async (req, res) => {
+  try {
+    const dbCommentData = await Comment.findAll()
+    res.json(dbCommentData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  };
 });
 
-// get a comment by id
-router.get('/:id', (req, res) => {
-  Comment.findOne({
-    where: {
-      id: req.params.id
-    },
-    include: [
-      {
-        model: User,
-        attributes: ['id']
-      }
-    ]
-  })
-    .then(dbCommentData => {
-      if (!dbCommentData) {
-        res.status(404).json({ message: 'No comment found with this id' });
-        return;
-      }
-      res.json(dbCommentData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+// route to get the comment at the specific id
+router.get('/:id', async (req, res) => {
+  try {
+    const dbCommentData = await Comment.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['id']
+        }
+      ]
     });
-});
-
-// post a new comment
-router.post('/', withAuth, (req, res) => {
-  // expects => {comment_text: "This is the comment", user_id: 1, content_id: 200, content_type:'movie'}
-  Comment.create({
-    comment_text: req.body.text,
-    user_id: req.session.user_id,
-    content_id: req.body.id,
-    content_type: req.body.type
-  })
-    .then(dbCommentData => res.json(dbCommentData))
-    .catch(err => {
-      console.log(err);
-      res.status(400).json(err);
-    });
-});
-
-// delete comment
-router.delete('/:id', withAuth, (req, res) => {
-  Comment.destroy({
-    where: {
-      id: req.params.id
+    // if the id does not exist
+    if (!dbCommentData) {
+      res.status(404).json({ message: 'No comment found with this id' });
+      return;
     }
-  })
-    .then(dbCommentData => {
-      if (!dbCommentData) {
-        res.status(404).json({ message: 'No comment found with this id!' });
-        return;
-      }
-      res.json(dbCommentData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+    res.json(dbCommentData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  };
+});
+
+// route to create a new comment
+router.post('/', withAuth, async (req, res) => {
+  try {
+    // expects => {comment_text: "This is the comment", user_id: 1, content_id: 200, content_type:'movie'}
+    const dbCommentData = await Comment.create({
+      comment_text: req.body.text,
+      user_id: req.session.user_id,
+      content_id: req.body.id,
+      content_type: req.body.type
     });
+    res.json(dbCommentData);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  };
+});
+
+// route to delete the comment at the specific id
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const dbCommentData = await Comment.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+    // if the id does not exist
+    if (!dbCommentData) {
+      res.status(404).json({ message: 'No comment found with this id!' });
+      return;
+    }
+    res.json(dbCommentData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  };
 });
 
 module.exports = router;

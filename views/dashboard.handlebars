@@ -5,18 +5,18 @@
 {{!-- Change user profile functionality --}}
 <section id="profile-section" class="columns is-centered">
     <div class="column is-three-fifths custom-bg-color has-text-white" id="profile-container">
-
         <h2>Profile</h2>
-
         <article class="media">
-            <figure class="media-left my-auto">
+            <figure class="media-left my-auto has-text-centered mx-3 px-1">
                 {{!-- container for user profile image --}}
+                <div class="is-size-3">{{username}}</div>
+                <br>
                 <p class="image">
-                    <img class="is-rounded dashboard-pfp-picture" src="{{pfp_path}}">
+                    <img class="is-rounded dashboard-pfp-picture mx-auto" src="{{pfp_path}}">
                 </p>
+                <br>
+                <div>{{email}}</div>
             </figure>
-
-
             <div class="container">
                 <form class="update-user-form" autocomplete="off">
                     <div class="field">
@@ -66,12 +66,9 @@
 {{!-- All user comments --}}
 <section id="comment-section" class="custom-bg-color has-text-white">
     <p class="has-text-weight-semibold">Your Comments</p>
-
-
     {{#each comments as |comment|}}
     {{!-- container for each comment --}}
     {{> dashcomments comment}}
     {{/each}}
-
 </section>
 <script src="/javascript/update-user.js"></script>

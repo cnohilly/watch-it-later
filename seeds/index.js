@@ -1,3 +1,5 @@
+// seeds to create dummy data for the database for testing
+
 const seedUsers = require('./user-seeds');
 const seedWatchlist = require('./watchlist-seeds');
 const seedComments = require('./comment-seeds');

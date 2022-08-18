@@ -5,7 +5,7 @@
 
 {{!-- Change user profile functionality --}}
 <section id="profile-section" class="columns is-centered">
-    <div class="column is-three-fifths custom-bg-color has-text-white">
+    <div class="column is-three-fifths custom-bg-color has-text-white" id="profile-container">
 
         <h2>Profile</h2>
 
@@ -26,6 +26,7 @@
                             <input type="text" placeholder="New username" id="username" class="input">
                         </div>
                     </div>
+                    <hr>
                     <div class="field">
                         <label for="current-password" class="label has-text-light">Current Password</label>
                         <div class="control">
@@ -38,6 +39,13 @@
                             <input type="password" placeholder="New Password" id="new-password" class="input">
                         </div>
                     </div>
+                    <hr>
+                    <div class="field">
+                        <label for="email" class="label has-text-light">New Email</label>
+                        <div class="control">
+                            <input type="email" placeholder="New Email" id="email" class="input">
+                        </div>
+                    </div>
                     <div class="field">
                         <div class="control">
                             <button type="submit" class="button is-link">Submit</button>
@@ -45,42 +53,6 @@
                     </div>
                 </form>
             </div>
-
-            {{!-- <div class="media-content">
-                <div class="content">
-                    <p class="has-text-grey-lighter">
-                        <strong class="has-text-info">USERNAME: {{username}}</strong>
-                    <div>
-                        <div class="field has-addons">
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Enter New Username" id="newuser-input">
-                            </div>
-                            <div class="control">
-                                <a class="button is-info" id="newuser-submit">
-                                    Submit
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <p></p>
-                    <strong class="has-text-info">Current Password</strong>
-                    <div>
-                        <div class="field has-addons">
-                            <div class="control">
-                                <input class="input" type="password" placeholder="Enter New Password"
-                                    id="newpass-input">
-                            </div>
-                            <div class="control">
-                                <a class="button is-info" id="newpass-submit">
-                                    Submit
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    </br>
-                    </p>
-                </div>
-            </div> --}}
         </article>
     </div>
 </section>

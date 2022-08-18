@@ -95,26 +95,31 @@ router.post('/logout', (req, res) => {
 // route to update current user requiring their current password
 router.put('/', withAuth, async (req, res) => {
   try {
+    // gets the currently logged in user
     let dbUserData = await User.findOne({
       where: {
         id: req.session.user_id
       }
     });
+    // if the current password given is correct
     if (!dbUserData.checkPassword(req.body.current_password)) {
       res.status(400).json({ message: 'Incorrect password!' });
+      return;
     }
-    let updateBody = {};
-    if (req.body.username) {
-      updateBody.username = req.body.username;
-    }
-    if (req.body.new_password) {
-      updateBody.password = req.body.new_password;
-    }
-    dbUserData = await User.update(updateBody, {
-      individualHooks: true,
+    // deletes the current_password from the body
+    delete req.body.current_password;
+    // will only set hooks to true if a new password is being set
+    let hooks = req.body.password ? true : false;
+    // updates the current user
+    dbUserData = await User.update({ ...req.body }, {
+      individualHooks: hooks,
       where: {
         id: req.session.user_id
       }
+    });
+    // updates the username if it needs to be
+    req.session.save(() => {
+      req.session.username = (req.body.username) ? req.session.username : req.body.username;
     });
     res.json(dbUserData);
   } catch (err) {
@@ -122,50 +127,6 @@ router.put('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-// // PUT route to change username
-// router.put('/:id', withAuth, (req, res) => {
-//   User.update({
-//           username: req.body.username
-//       }, {
-//           where: {
-//               id: req.session.id
-//           }
-//       }).then(dbUserData => {
-//           if (!dbUserData) {
-//               res.status(404).json({ message: 'No user found with this id' });
-//               return;
-//           }
-//           res.json(dbUserData);
-//       })
-//       .catch(err => {
-//           console.log(err);
-//           res.status(500).json(err);
-//       });
-// });
-
-// // PUT route to change password
-// router.put('/:id', withAuth, (req, res) => {
-//   Post.update({
-//           password: req.body.password
-//       }, {
-//           where: {
-//               id: req.params.id
-//           }
-//       }).then(dbUserData => {
-//           if (!dbUserData) {
-//               res.status(404).json({ message: 'No user found with this id' });
-//               return;
-//           }
-//           res.json(dbUserData);
-//       })
-//       .catch(err => {
-//           console.log(err);
-//           res.status(500).json(err);
-//       });
-// });
-
-
 
 router.delete('/:id', (req, res) => {
   User.destroy({

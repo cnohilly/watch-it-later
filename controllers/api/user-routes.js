@@ -44,8 +44,9 @@ router.post("/", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
-      req.session.loggedIn = true;
       req.session.pfp_path = dbUserData.pfp_path;
+      req.session.email = dbUserData.email;
+      req.session.loggedIn = true;
 
       res.json(dbUserData);
     });
@@ -81,8 +82,10 @@ router.post('/login', async (req, res) => {
       // declare session variables
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
-      req.session.loggedIn = true;
       req.session.pfp_path = dbUserData.pfp_path;
+      req.session.email = dbUserData.email;
+      req.session.loggedIn = true;
+
       res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
   } catch (err) {
@@ -131,6 +134,7 @@ router.put('/', withAuth, async (req, res) => {
     // updates the username and profile picture if it needs to be
     req.session.username = (req.body.username) ? req.body.username : req.session.username;
     req.session.pfp_path = (req.body.pfp_path) ? req.body.pfp_path : req.session.pfp_path;
+    req.session.email = (req.body.email) ? req.body.email : req.session.email;
 
     res.json(dbUserData);
   } catch (err) {

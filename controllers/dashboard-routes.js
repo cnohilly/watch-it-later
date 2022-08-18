@@ -27,9 +27,11 @@ router.get('/', withAuth, async (req, res) => {
     });
     // mapping comments to plain data
     const comments = dbCommentData.map(comment => comment.get({ plain: true }));
-    // gets the user's profile picture path from the session
+    // gets the user's username and profile picture path from the session
+    const username = req.session.username;
     const pfp_path = req.session.pfp_path;
-    res.render('dashboard', { comments, pfp_path, loggedIn: true });
+    const email = req.session.email;
+    res.render('dashboard', { comments, username, pfp_path, email, loggedIn: true });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth')
 // route to get all entries in the user table, excluding their passwords
 router.get('/', async (req, res) => {
   try {
-    const dbUserData = User.findAll({
+    const dbUserData = await User.findAll({
       attributes: { exclude: ['password'] }
     });
     res.json(dbUserData);
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 // route to get the information for the user with the specific id
 router.get('/:id', async (req, res) => {
   try {
-    const dbUserData = User.findOne({
+    const dbUserData = await User.findOne({
       where: {
         id: req.body.id
       },
@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
 // expects username: string, email: string, password: string
 router.post("/", async (req, res) => {
   try {
-    const dbUserData = User.create({
+    const dbUserData = await User.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
@@ -59,7 +59,7 @@ router.post("/", async (req, res) => {
 // expects username and password, finds the specific username and checks that the password is correct
 router.post('/login', async (req, res) => {
   try {
-    const dbUserData = User.findOne({
+    const dbUserData = await User.findOne({
       where: {
         username: req.body.username
       }
@@ -151,6 +151,12 @@ router.delete('/:id', async (req, res) => {
     if (!dbUserData) {
       res.status(404).json({ message: 'No user found with this id' });
       return;
+    }
+    // destroys the current session if the user deleted was the one logged in
+    if (req.params.id == req.session.user_id) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
     }
     res.json(dbUserData);
   } catch (err) {

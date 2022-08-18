@@ -6,7 +6,7 @@ const withAuth = require('../utils/auth');
 // page for the user's dashboard with their comments and form to update their information
 router.get('/', withAuth, async (req, res) => {
   try {
-    const dbCommentData = Comment.findAll({
+    const dbCommentData = await Comment.findAll({
       where: {
         user_id: req.session.user_id
       },

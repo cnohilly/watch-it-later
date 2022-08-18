@@ -305,6 +305,15 @@ main {
 .cm-logo-size{
     max-width: 300px;
 }
+
+.cm-brand-nav{
+    width: 40px;
+    max-height: none !important;
+}
+
+.cm-brand-footer{
+    width: 100px;
+}
 /* Homepage End */
 
 /* Dashboard Styling */

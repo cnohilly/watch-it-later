@@ -4,6 +4,10 @@
 
 ## Description
 
+This application is a fully functional and interactive movie and tv show watchlist. It allows for users to browse the homepage which displays a variety of Most Popular and Top Rated movies and tv shows along with allowing them to search for any movie or tv show they please. Each page will give the user the ability to rate, comment and add the respective movie or tv show to their watchlist under Plan to Watch, Watching or Completed. 
+
+The user will be able to browse and search movies without an account, but in order to access ratings, comments and create a watchlist they will need to either login or signup. By doing so all the user's ratings, watchlists and comments will be saved to the applications database so it will never be lost.
+
 Check out the links section for the link to the deployed application on Heroku!
 
 ## Table of Contents
@@ -73,7 +77,19 @@ npm start
 
 ## Screenshots
 
-The following images demonstrate the application's appearance and functionality:
+The following images demonstrate the application's appearance and functionality.
+
+Homepage Layout:
+
+![homepage_demo](/public/images/Homepage_demo.gif)
+
+Login and Signup Functionalities:
+
+![login_signup_demo](/public/images/Login_signup_demo.gif)
+
+Search, Rating, Comment and Watchlist Functionalities:
+
+![search_demo](/public/images/Search_feature_demo.gif)
 
 ## Technologies Used
 
